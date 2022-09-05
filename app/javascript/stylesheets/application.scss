@@ -1,2 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+header li {
+  list-style: none;
+}
+
+footer p {
+  color: #FFF;
+}
