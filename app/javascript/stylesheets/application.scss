@@ -30,3 +30,16 @@ h5 {
 table {
   margin: 0 0 50px 200px;
 }
+
+.card {
+  text-align: left;
+  margin: 30px 0 30px 350px;
+}
+
+.btn-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+}

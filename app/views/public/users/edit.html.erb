@@ -1,0 +1,44 @@
+<div class="container">
+  <%= form_with model: @user, method: :patch do |f| %>
+    <table>
+      <h5>マイプロフィールの編集</h5>
+      <tbody>
+        <tr>
+          <td><b><%= f.label :image, "プロフィール画像" %></b></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :nickname, "ニックネーム" %></b></td>
+          <td><%= f.text_field :nickname %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :prefecture, "居住地" %></b></td>
+          <td><%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'} %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :gender, "性別" %></b></td>
+          <td><%= f.select :gender, User.genders.keys, {prompt: '選択してください'} %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :age, "年齢" %></b></td>
+          <td><%= f.select :age, options_for_select((18..100).to_a) %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :favorite_food, "好きな食べ物" %></b></td>
+          <td><%= f.text_field :favorite_food %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :introduction, "自己紹介" %></b></td>
+          <td><%= f.text_area :introduction %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="actions">
+            <%= f.submit "変更を保存する", class: "btn btn-outline-success" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  <% end %>
+</div>
