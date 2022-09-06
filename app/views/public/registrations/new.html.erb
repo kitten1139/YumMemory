@@ -1,29 +1,71 @@
-<h2>Sign up</h2>
+<div class="container">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+    <table>
+      <h4>新規会員登録</h4>
+      <tbody>
+        <tr>
+          <td><%= f.label :email, "メールアドレス" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :password do %>
+              <% if @minimum_password_length %>
+                パスワード(<%= @minimum_password_length %>文字以上)
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :password_confirmation,"パスワード(確認用)" %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :image, "プロフィール画像" %></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :nickname, "ニックネーム" %></td>
+          <td><%= f.text_field :nickname %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :prefecture, "居住地" %></td>
+          <td><%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'} %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :gender, "性別" %></td>
+          <td><%= f.select :gender, User.genders.keys, {prompt: '選択してください'} %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :age, "年齢" %></td>
+          <td><%= f.select :age, options_for_select((18..100).to_a) %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :favorite_food, "好きな食べ物" %></td>
+          <td><%= f.text_field :favorite_food %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :introduction, "自己紹介" %></td>
+          <td><%= f.text_area :introduction %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="actions">
+            <%= f.submit "新規登録", class: "btn btn-outline-primary" %>
+          </td>
+        </tr>
+        <tr>
+          <td><h5>既に登録済みの方</h5></td>
+        </tr>
+        <tr>
+          <td class="text-center"><%= render "public/shared/links" %>からログインしてください。</td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
