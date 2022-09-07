@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2022_09_04_082145) do
 
   create_table "item_categories", force: :cascade do |t|
     t.integer "large_category_id", null: false
-    t.integer "post_id", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -97,7 +96,7 @@ ActiveRecord::Schema.define(version: 2022_09_04_082145) do
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
     t.integer "gender", default: 0, null: false
-    t.integer "age", null: false
+    t.integer "age"
     t.integer "prefecture", default: 0, null: false
     t.text "introduction"
     t.string "favorite_food"

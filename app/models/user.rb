@@ -12,7 +12,6 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :gender, presence: true
-  validates :age, presence: true
   validates :prefecture, presence: true
 
   def get_profile_image
@@ -20,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com' ,age: 18) do |user|
+    find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.nickname = "guestuser"
     end
