@@ -1,0 +1,84 @@
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #EDAD0B;">
+      <div class="container">
+        <% if admin_signed_in? %>
+          <a class="navbar-brand" href="/admin"><span>YumMemory</span></a>
+        <% else %>
+          <a class="navbar-brand" href="/"><span>YumMemory</span></a>
+        <% end %>
+
+        <% if user_signed_in? %>
+        <!--ユーザーがログインしている時 -->
+          <ul class="navbar-nav ml-auto">
+            <li>
+              <%= link_to user_path(current_user), class: "nav-link text-light" do %>
+                <i class="fas fa-address-card"></i>マイページ
+              <% end %>
+            </li>
+            <li>
+              <%= link_to posts_path, class: "nav-link text-light" do %>
+                <i class="fas fa-search"></i>みんなの投稿一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#", class: "nav-link text-light" do %>
+                <i class="fas fa-thumbs-up"></i>お気に入り
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
+            </li>
+
+        <% elsif admin_signed_in? %>
+        <!-- 管理者がログインしている時 -->
+            <li>
+              <%= link_to admin_users_path, class: "nav-link text-light" do %>
+                <i class="fas fa-users"></i>会員一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_path, class: "nav-link text-light" do %>
+                <i class="fas fa-pencil-alt"></i>レビュー履歴一覧
+              <% end %>
+            </li>
+            <li>
+              <%=  link_to admin_categories_path ,class: "nav-link text-light" do %>
+                <i class="fas fa-folder"></i>カテゴリ一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+                <i class="fas fa-sign-out-alt"></i>ログアウト
+              <% end %>
+            </li>
+
+        <% else %>
+        <!-- ログインしていない時 -->
+            <li>
+              <%= link_to about_path, class: "nav-link text-light" do %>
+                <i class="fas fa-shopping-basket"></i>サイト概要
+              <% end %>
+            </li>
+            <li>
+              <%= link_to users_guest_sign_in_path, method: :post, class: "nav-link text-light" do %>
+                <i class="fas fa-user"></i>ゲストログイン(閲覧用)
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                <i class="fas fa-user-plus"></i>新規登録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                <i class="fas fa-sign-in-alt text-light"></i>ログイン
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </nav>
+  </header>
+

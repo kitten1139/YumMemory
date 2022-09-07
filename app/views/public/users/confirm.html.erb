@@ -1,0 +1,13 @@
+<span class="text-center">
+  <h3 class="my-5"><b>退会手続きの前にご確認ください</b></h3>
+  <p class="pb-3">
+    <b>一度退会すると、現在保存されているデータは</br>
+    すべて削除され閲覧できなくなります。</br>
+    退会する場合は、「退会する」をクリックしてください。</b>
+  </p>
+<span>
+
+<div class="text-center">
+  <%= link_to "退会しない", user_path(@user), class: "btn btn-outline-primary mr-3 mb-5" %>
+  <%= link_to "退会する", user_deleted_path(@user), method: :patch, class: "btn btn-outline-danger mb-5", data: { confirm: "本当に退会しますか？" } %>
+</div>
