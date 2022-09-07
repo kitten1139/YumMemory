@@ -7,7 +7,7 @@ before_action :authenticate_user!
 
   def edit
     @user = User.find(params[:id])
-    #編集するユーザーが本人でない場合はユーザーページにリダイレクトする
+    #編集するユーザーが本人でない場合はユーザー詳細ページにリダイレクトする
     unless @user == current_user
       redirect_to user_path(@user)
     end
