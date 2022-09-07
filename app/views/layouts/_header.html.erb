@@ -12,22 +12,22 @@
           <ul class="navbar-nav ml-auto">
             <li>
               <%= link_to user_path(current_user), class: "nav-link text-light" do %>
-                マイページ
+                <i class="fas fa-address-card"></i>マイページ
               <% end %>
             </li>
             <li>
               <%= link_to posts_path, class: "nav-link text-light" do %>
-                投稿一覧
+                <i class="fas fa-search"></i>みんなの投稿一覧
               <% end %>
             </li>
             <li>
               <%= link_to "#", class: "nav-link text-light" do %>
-                お気に入り
+                <i class="fas fa-thumbs-up"></i>お気に入り
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
-                ログアウト
+                <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>
 
@@ -35,22 +35,22 @@
         <!-- 管理者がログインしている時 -->
             <li>
               <%= link_to admin_users_path, class: "nav-link text-light" do %>
-                ユーザー一覧
+                <i class="fas fa-users"></i>会員一覧
               <% end %>
             </li>
             <li>
               <%= link_to admin_path, class: "nav-link text-light" do %>
-                レビュー履歴一覧
+                <i class="fas fa-pencil-alt"></i>レビュー履歴一覧
               <% end %>
             </li>
             <li>
               <%=  link_to admin_categories_path ,class: "nav-link text-light" do %>
-                カテゴリ一覧
+                <i class="fas fa-folder"></i>カテゴリ一覧
               <% end %>
             </li>
             <li>
               <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
-                ログアウト
+                <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>
 
@@ -62,8 +62,8 @@
               <% end %>
             </li>
             <li>
-              <%= link_to posts_path, class: "nav-link text-light" do %>
-                <i class="fas fa-file-alt"></i>投稿一覧
+              <%= link_to users_guest_sign_in_path, method: :post, class: "nav-link text-light" do %>
+                <i class="fas fa-user"></i>ゲストログイン(閲覧用)
               <% end %>
             </li>
             <li>

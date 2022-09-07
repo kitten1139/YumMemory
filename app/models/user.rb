@@ -19,6 +19,13 @@ class User < ApplicationRecord
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
 
+  def self.guest
+    find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com' ,age: 18) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.nickname = "guestuser"
+    end
+  end
+
   enum prefecture: {
     無回答:0,北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
