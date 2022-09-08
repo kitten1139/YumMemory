@@ -1,2 +1,8 @@
-<h1>Admin::LargeCategories#edit</h1>
-<p>Find me in app/views/admin/large_categories/edit.html.erb</p>
+<div class="container mb-5">
+  <h5>カテゴリ(大分類)編集</h5>
+  <%= form_with model: @large_category, url: admin_large_category_path(@large_category), method: :patch do |f| %>
+    <b><%= f.label :name, "カテゴリ名", class: "mt-5 mr-5" %></b>
+    <%= f.text_field :name, placeholder: "カテゴリ名" %>
+    <%= f.submit "変更を保存",class: "btn btn-outline-success ml-5" %>
+  <% end %>
+</div>

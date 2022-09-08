@@ -15,9 +15,16 @@ class Admin::LargeCategoriesController < ApplicationController
   end
 
   def edit
+    @large_category = LargeCategory.find(params[:id])
   end
 
   def update
+    @large_category = LargeCategory.find(params[:id])
+    if @large_category.update(large_category_params)
+      redirect_to admin_large_categories_path
+    else
+      render :edit
+    end
   end
 
   def destroy
