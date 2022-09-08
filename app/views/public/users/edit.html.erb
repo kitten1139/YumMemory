@@ -25,6 +25,7 @@
         </tr>
         <tr>
           <td><b><%= f.label :age, "年齢" %><%= @user.age %></b></td>
+          <!--編集前の登録年齢をプルダウン選択の初期値で表示-->
           <td><%= f.select :age, options_for_select((18..100).to_a, @user.age) %></td>
         </tr>
         <tr>

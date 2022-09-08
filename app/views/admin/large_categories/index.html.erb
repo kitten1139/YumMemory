@@ -1,9 +1,24 @@
-<% @large_categories.each do |large_category| %>
-  <div><%= link_to large_category.name, admin_large_category_item_categories_path(large_category) %></div>
-<% end %>
+<div class="container">
+  <h5>カテゴリ(大分類)一覧・追加</h5>
+  <div>
+    <%= form_with model: @large_category, url: admin_large_categories_path do |f| %>
+      <%= f.label :name, "カテゴリ名" %>
+      <%= f.text_field :name, placeholder: "カテゴリ名(大分類)", class: "ml-5" %>
+      <%= f.submit "新規登録", class: "btn btn-outline-warning ml-5" %>
+    <% end %>
+  </div>
 
-<%= form_with model: @large_category, url: admin_large_categories_path do |f| %>
-
-<%= f.text_field :name %>
-<%= f.submit %>
-<% end %>
+  <h4>カテゴリ一覧</h4>
+  <% @large_categories.each do |large_category| %>
+    <h3>
+      <ul class="category">
+        <li>
+        <%= link_to admin_large_category_item_categories_path(large_category) do %>
+          <%= large_category.name %>
+        <% end %>
+        <%= link_to "編集する", edit_admin_large_category_path(large_category), class: "btn btn-outline-success" %>
+        </li>
+      </ul>
+    </h3>
+  <% end %>
+</div>
