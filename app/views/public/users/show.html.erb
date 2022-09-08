@@ -30,11 +30,11 @@
         自己紹介:</br><%= @user.introduction %>
       </li>
     </ul>
-  </div>
+</div>
 
-  <div class="btn-wrapper">
-    <% if user_signed_in? && @user == current_user && @user.nickname != "guestuser" %>
-      <%= link_to "プロフィール情報を編集/追加する", edit_user_path(current_user), class: "btn btn-outline-success" %>
-      <%= link_to "マイ投稿一覧を見る", post_path(current_user), class: "btn btn-outline-secondary mt-3" %>
-    <% end %>
-  </div>
+<div class="btn-wrapper">
+  <% if user_signed_in? && @user == current_user && @user.nickname != "guestuser" %>
+    <%= link_to "プロフィール情報を編集/追加する", edit_user_path(current_user), class: "btn btn-outline-success" %>
+    <%= link_to "マイ投稿一覧を見る", post_path(current_user), class: "btn btn-outline-secondary mt-3" %>
+  <% end %>
+</div>

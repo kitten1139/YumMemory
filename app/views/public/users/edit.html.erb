@@ -1,6 +1,6 @@
 <div class="container">
   <%= form_with model: @user, method: :patch do |f| %>
-    <table>
+    <table style="border-collapse: separate; border-spacing: 70px 5px;">
       <h5>マイプロフィールの編集</h5>
       <tbody>
         <tr>
@@ -10,6 +10,10 @@
         <tr>
           <td><b><%= f.label :nickname, "ニックネーム" %></b></td>
           <td><%= f.text_field :nickname %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :email, "メールアドレス" %></b></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
         </tr>
         <tr>
           <td><b><%= f.label :prefecture, "居住地" %></b></td>

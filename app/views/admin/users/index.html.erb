@@ -6,6 +6,7 @@
         <thead>
           <tr class="table-warning">
             <th scope="col">会員ID</th>
+            <th scope="col">プロフィール画像</th>
             <th scope="col", style="text-decoration: underline;">氏名</th>
             <th scope="col">メールアドレス</th>
             <th scope="col">ステータス</th>
@@ -15,6 +16,7 @@
         <% @users.each do |user| %>
           <tr>
             <th scope="row"><%= user.id %></th>
+            <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
             <td><%= link_to admin_user_path(user), style: "color: #000; text-decoration: underline;" do %>
                   <%= user.nickname %>
                 <% end %>

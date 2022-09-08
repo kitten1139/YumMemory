@@ -8,6 +8,10 @@
           <td><%= @user.id %></td>
         </tr>
         <tr>
+          <td>プロフィール画像</td>
+          <td><%= image_tag @user.get_profile_image, size:"100x100" %></td>
+        </tr>
+        <tr>
           <td>ニックネーム</td>
           <td><%= @user.nickname %></td>
         </tr>

@@ -11,6 +11,10 @@
               <td><%= @user.id %></td>
             </tr>
             <tr>
+              <td><b><%= f.label :image, "プロフィール画像" %></b></td>
+              <td><%= f.file_field :image, accept: "image/*" %></td>
+            </tr>
+            <tr>
             <td><b><%= f.label :nickname, "ニックネーム" %></b></td>
             <td><%= f.text_field :nickname %></td>
             </tr>
