@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h5><%= @user.nickname %>さんの会員詳細</h5>
+      <table class="table table-borderless">
+        <tr>
+          <td>会員ID</td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td>ニックネーム</td>
+          <td><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td>性別</td>
+          <td><%= @user.gender %></td>
+        </tr>
+        <tr>
+          <td>年齢</td>
+          <td><%= @user.age %></td>
+        </tr>
+        <tr>
+          <td>居住地</td>
+          <td><%= @user.prefecture %></td>
+        </tr>
+        <tr>
+          <td>好きな食べ物</td>
+          <td><%= @user.favorite_food %></td>
+        </tr>
+        <tr>
+          <td>自己紹介</td>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td>会員ステータス</td>
+          <% if @user.is_deleted == false %>
+            <td class="text-success font-weight-bold">有効</td>
+          <% else %>
+            <td class="text-secondary font-weight-bold">退会</td>
+          <% end %>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= link_to "編集する", edit_admin_user_path, class: "btn btn-outline-success px-3" %>
+            <%= link_to "レビュー履歴一覧を見る", admin_path, class: "btn btn-outline-primary ml-5" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
