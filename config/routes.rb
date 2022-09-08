@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'categories/index'
+  end
+  namespace :admin do
+    get 'item_categories/index'
+    get 'item_categories/edit'
+  end
+  namespace :admin do
+    get 'large_categories/index'
+    get 'large_categories/edit'
+  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -16,7 +27,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '' => 'homes#top'
     resources :reviews, only: [:show, :destroy]
-    resources :large_categories, except: [:new, :show] do
+    resources :large_categories, except: [:new, :show] , shallow: true do
       resources :item_categories, except: [:new, :show]
     end
     resources :users, only: [:index, :show, :edit, :update]
@@ -30,6 +41,8 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       resource :post_favorites, only: [:create, :destroy]
     end
+
+    resources :categories, only: [:index]
 
     resources :users, only: [:show, :edit, :update] do
       get 'my_posts' => 'users#my_posts'

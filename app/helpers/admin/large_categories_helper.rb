@@ -1,0 +1,2 @@
+module Admin::LargeCategoriesHelper
+end

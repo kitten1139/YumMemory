@@ -1,0 +1,9 @@
+<% @large_categories.each do |large_category| %>
+  <div><%= link_to large_category.name, admin_large_category_item_categories_path(large_category) %></div>
+<% end %>
+
+<%= form_with model: @large_category, url: admin_large_categories_path do |f| %>
+
+<%= f.text_field :name %>
+<%= f.submit %>
+<% end %>

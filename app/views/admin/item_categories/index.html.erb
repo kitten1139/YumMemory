@@ -1,0 +1,11 @@
+<h1><%= @large_category.name %></h1>
+
+<% @item_categories.each do |item_category| %>
+  <div><%= item_category.name %></div>
+<% end %>
+
+<%= form_with model: @item_category, url: admin_large_category_item_categories_path(@large_category) do |f| %>
+
+<%= f.text_field :name %>
+<%= f.submit %>
+<% end %>
