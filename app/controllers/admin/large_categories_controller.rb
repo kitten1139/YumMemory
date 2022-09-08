@@ -28,6 +28,9 @@ class Admin::LargeCategoriesController < ApplicationController
   end
 
   def destroy
+    large_category = LargeCategory.find(params[:id])
+    large_category.destroy
+    redirect_to admin_large_categories_path
   end
 
   private

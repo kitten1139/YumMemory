@@ -17,6 +17,7 @@
           <%= large_category.name %>
         <% end %>
         <%= link_to "編集する", edit_admin_large_category_path(large_category), class: "btn btn-outline-success" %>
+        <%= link_to "削除する", admin_large_category_path(large_category), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
         </li>
       </ul>
     </h3>
