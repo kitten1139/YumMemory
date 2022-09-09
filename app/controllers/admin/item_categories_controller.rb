@@ -1,8 +1,10 @@
 class Admin::ItemCategoriesController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @large_category = LargeCategory.find(params[:large_category_id])
     @item_categories = @large_category.item_categories
-    @item_category = @item_categories.new
+    @item_category_new = @item_categories.new
   end
 
   def create
@@ -23,7 +25,7 @@ class Admin::ItemCategoriesController < ApplicationController
 
   def update
     item_category = ItemCategory.find(params[:id])
-    item_category.update
+    item_category.update(item_category_params)
     redirect_to admin_large_category_item_categories_path(item_category.large_category)
   end
 
@@ -36,6 +38,7 @@ class Admin::ItemCategoriesController < ApplicationController
   private
 
   def item_category_params
-    params.require(:item_category).permit(:name)
+    params.require(:item_category).permit(:large_category_id, :name)
   end
+
 end

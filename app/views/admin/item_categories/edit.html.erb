@@ -1,2 +1,14 @@
-<h1>Admin::ItemCategories#edit</h1>
-<p>Find me in app/views/admin/item_categories/edit.html.erb</p>
+<div class="container mb-5">
+  <div class="field_with_errors">
+  <h5>カテゴリ(小分類)編集</h5>
+
+  <%= flash[:notice] %>
+
+    <%= form_with model: @large_category, url: admin_item_category_path(@large_category), method: :patch do |f| %>
+      <b><%= f.label :name, "カテゴリ名" %></b>
+      <%= f.text_field :name, placeholder: "カテゴリ名" %>
+      <%= f.submit "変更を保存", class: "btn btn-outline-success" %>
+      <button class="btn btn-outline-primary" onclick="history.back(-1)">戻る</button>
+    <% end %>
+  </div>
+</div>

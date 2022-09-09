@@ -4,13 +4,12 @@
 
     <%= flash[:notice] %>
 
-    <%= form_with model: @large_category, url: admin_large_categories_path do |f| %>
+    <%= form_with model: @large_category_new, url: admin_large_categories_path do |f| %>
       <b><%= f.label :name, "カテゴリ名" %></b>
       <%= f.text_field :name, placeholder: "カテゴリ名(大分類)" %>
       <%= f.submit "新規登録", class: "btn btn-outline-warning" %>
     <% end %>
   </div>
-
 
   <h4>カテゴリ一覧</h4>
   <% @large_categories.each do |large_category| %>
