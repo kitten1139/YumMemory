@@ -1,9 +1,14 @@
-<div class="container mb-5">
+<div class="container">
   <h5>カテゴリ(大分類)編集</h5>
+  <%= flash[:notice] %>
+  <table style="border-collapse: separate; border-spacing: 70px 5px;">
+    <tr>
   <%= form_with model: @large_category, url: admin_large_category_path(@large_category), method: :patch do |f| %>
-    <b><%= f.label :name, "カテゴリ名", class: "mt-5 mr-5" %></b>
-    <%= f.text_field :name, placeholder: "カテゴリ名" %>
-    <%= f.submit "変更を保存",class: "btn btn-outline-success ml-5" %> |
-    <button class="btn btn-outline-primary" onclick="history.back(-1)">戻る</button>
+    <th><b><%= f.label :name, "カテゴリ名" %></b></th>
+    <th><%= f.text_field :name, placeholder: "カテゴリ名" %></th>
+    <th><%= f.submit "変更を保存", class: "btn btn-outline-success" %></th>
+    <th><button class="btn btn-outline-primary" onclick="history.back(-1)">戻る</button></th>
   <% end %>
+    </tr>
+  </table>
 </div>

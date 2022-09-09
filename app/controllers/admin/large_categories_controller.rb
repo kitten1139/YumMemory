@@ -1,4 +1,6 @@
 class Admin::LargeCategoriesController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @large_categories = LargeCategory.all
     @large_category = LargeCategory.new
@@ -7,9 +9,11 @@ class Admin::LargeCategoriesController < ApplicationController
   def create
     @large_category = LargeCategory.new(large_category_params)
     if @large_category.save
+      flash[:notice] = "登録が完了しました。"
       redirect_to admin_large_categories_path
     else
       @large_categories = LargeCategory.all
+      flash[:notice] = "カテゴリ(大分類)名を入力してください。"
       render :index
     end
   end
@@ -21,8 +25,10 @@ class Admin::LargeCategoriesController < ApplicationController
   def update
     @large_category = LargeCategory.find(params[:id])
     if @large_category.update(large_category_params)
+      flash[:notice] = "更新が完了しました。"
       redirect_to admin_large_categories_path
     else
+      flash[:notice] = "カテゴリ(大分類)名を入力してください。"
       render :edit
     end
   end

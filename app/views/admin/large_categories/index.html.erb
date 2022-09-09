@@ -1,12 +1,15 @@
 <div class="container">
   <h5>カテゴリ(大分類)一覧・追加</h5>
-  <div>
+  <table style="border-collapse: separate; border-spacing: 70px 5px;">
+  <%= flash[:notice] %>
+    <tr>
     <%= form_with model: @large_category, url: admin_large_categories_path do |f| %>
-      <%= f.label :name, "カテゴリ名" %>
-      <%= f.text_field :name, placeholder: "カテゴリ名(大分類)", class: "ml-5" %>
-      <%= f.submit "新規登録", class: "btn btn-outline-warning ml-5" %>
+      <th><%= f.label :name, "カテゴリ名" %></th>
+      <th><%= f.text_field :name, placeholder: "カテゴリ名(大分類)" %></th>
+      <th><%= f.submit "新規登録", class: "btn btn-outline-warning" %></th>
     <% end %>
-  </div>
+    </tr>
+  </table>
 
   <h4>カテゴリ一覧</h4>
   <% @large_categories.each do |large_category| %>
