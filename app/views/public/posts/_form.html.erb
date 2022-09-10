@@ -1,0 +1,20 @@
+<%= f.label :item_image, "商品画像" %>
+<%= f.file_field :item_image, accept: 'image/*' %></br>
+
+<%= f.label :name, "商品名" %>
+<%= f.text_field :name, placeholder: "商品名" %></br>
+
+<%= f.label :item_category_id, "カテゴリ"  %>
+<%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;"}) %></br>
+
+<%= f.label :review_title, "レビュータイトル" %>
+<%= f.text_field :review_title %></br>
+
+<%= f.label :review_body, "レビュー内容" %>
+<%= f.text_area :review_body %></br>
+
+<% if local_assigns[:post] %>
+  <%= f.submit "新規投稿", class:"btn btn-outline-success" %>
+<% else %>
+  <%= f.submit "変更を保存", class:"btn btn-outline-success" %>
+<% end %>

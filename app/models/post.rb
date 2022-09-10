@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
-  has_one_attached :image
+  has_one_attached :item_image
 
   belongs_to :user
   belongs_to :item_category
@@ -9,5 +9,9 @@ class Post < ApplicationRecord
 
   validates :rate, presence: true
   validates :item_name, presence: true
+
+  def get_item_image
+    (item_image.attached?) ? item_image : 'item_no_image.jpg'
+  end
 
 end
