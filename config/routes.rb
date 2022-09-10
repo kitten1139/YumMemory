@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'about' => 'homes#about'
 
-    resources :posts, except: [:destroy] do
+    resources :posts do
       resources :post_comments, only: [:create, :destroy]
       resource :post_favorites, only: [:create, :destroy]
     end
@@ -52,8 +52,8 @@ Rails.application.routes.draw do
     end
 
     get 'search' => 'searches#search'
-    get 'category/:id' => 'seaches#large_category_search'
-    get 'category/:large_category_id/item_category/:id' => 'seaches#item_category_seach'
+    get 'category/:id' => 'searches#large_category_search', as: 'large_category_search'
+    get 'category/:large_category_id/item_category/:id' => 'searches#item_category_search', as: 'item_category_search'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

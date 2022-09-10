@@ -1,6 +1,8 @@
-<% @large_categories.each do |large_category| %>
-  <div><%= large_category.name %></div>
-  <% large_category.item_categories.each do |item_category| %>
-    <div><%= item_category.name %></div>
+<div class="container">
+  <% @large_categories.each do |large_category| %>
+    <h3><%= large_category.name %></h3>
+    <% large_category.item_categories.each do |item_category| %>
+      <h6><%= item_category.name %></h6>
+    <% end %>
   <% end %>
-<% end %>
+</div>

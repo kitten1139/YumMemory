@@ -4,7 +4,7 @@ class Admin::ItemCategoriesController < ApplicationController
   def index
     @large_category = LargeCategory.find(params[:large_category_id])
     @item_categories = @large_category.item_categories
-    @item_category_new = @item_categories.new
+    @item_category = @item_categories.new
   end
 
   def create
@@ -38,7 +38,7 @@ class Admin::ItemCategoriesController < ApplicationController
   private
 
   def item_category_params
-    params.require(:item_category).permit(:large_category_id, :name)
+    params.require(:item_category).permit(:name)
   end
 
 end
