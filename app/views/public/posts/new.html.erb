@@ -1,6 +1,12 @@
 <div class="container">
-  <h4>新規投稿</h4>
   <%= form_with model:@post, url: posts_path, method: :post do |f| %>
-    <%= render 'form', post: @post, f: f, item_categories: @item_categories %>
+    <table style="border-collapse: separate; border-spacing: 70px 5px;">
+      <h4>新規投稿</h4>
+        <tbody>
+
+        <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: [], large_category_id: nil %>
+
+        </tbody>
+    </table>
   <% end %>
 </div>

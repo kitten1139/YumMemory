@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     get 'search' => 'searches#search'
     get 'category/:id' => 'searches#large_category_search', as: 'large_category_search'
     get 'category/:large_category_id/item_category/:id' => 'searches#item_category_search', as: 'item_category_search'
+    get 'get_item_category' => 'categories#get_item_category'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,12 @@
+<div class="container">
+  <%= form_with model:@post, url: posts_path, method: :post do |f| %>
+    <table style="border-collapse: separate; border-spacing: 70px 5px;">
+      <h4>投稿編集</h4>
+        <tbody>
+
+        <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: @item_categories, large_category_id: @large_category.id %>
+
+        </tbody>
+    </table>
+  <% end %>
+</div>

@@ -1,32 +1,53 @@
-<%= f.label :item_image, "商品画像" %>
-<%= f.file_field :item_image, accept: 'image/*' %></br>
-
-<%= f.label :name, "商品名" %>
-<%= f.text_field :name, placeholder: "商品名" %></br>
-
-<%= f.label :item_category_id, "カテゴリ"  %>
-<%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;"}) %></br>
-
-<div class="" id="star">
-  <%= f.label :rate,'評価 :', class:"" %>
-  <%= f.hidden_field :rate, id: :review_star %>
-</div>
-
-<%= f.label :review_title, "レビュータイトル" %>
-<%= f.text_field :review_title %></br>
-
-<%= f.label :review_body, "レビュー内容" %>
-<%= f.text_area :review_body %></br>
-
-<% if local_assigns[:post] %>
-  <%= f.submit "新規投稿", class:"btn btn-outline-success" %>
-<% else %>
-  <%= f.submit "変更を保存", class:"btn btn-outline-success" %>
-<% end %>
+<tr>
+  <td><%= f.label :item_image, "商品画像" %></td>
+  <td><%= f.file_field :item_image, accept: 'image/*' %></td>
+</tr>
+<tr>
+  <td><%= f.label :item_name, "商品名" %></td>
+  <td><%= f.text_field :item_name, placeholder: "商品名" %></td>
+</tr>
+<tr>
+  <td><%= f.label :large_category_id, "大カテゴリ"  %></td>
+  <% if large_category_id.nil? %>
+    <!--新規投稿画面で使用-->
+    <td><%= f.collection_select(:large_category_id, large_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;", id: "large_category" }) %></td>
+  <% else %>
+  　<!--投稿編集画面で使用-->
+    <td><%= f.collection_select(:large_category_id, large_categories, :id, :name, { selected: large_category_id }, {style: "width:300px;", id: "large_category" }) %></td>
+  <% end %>
+</tr>
+<tr>
+  <td><%= f.label :item_category_id, "小カテゴリ"  %></td>
+  <td><%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;", id: "item_category"}) %></td>
+</tr>
+<tr>
+  <td><%= f.label :rate, '評価', class:"" %></td>
+  <td>
+    <div class="" id="star">
+      <%= f.hidden_field :rate, id: :review_star %>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td><%= f.label :review_title, "レビュータイトル" %></td>
+  <td><%= f.text_field :review_title %></td>
+</tr>
+<tr>
+  <td><%= f.label :review_body, "レビュー内容" %></td>
+  <td><%= f.text_area :review_body %></td>
+</td>
+<tr>
+  <td></td>
+  <% if local_assigns[:post] %>
+    <td><%= f.submit "新規投稿", class:"btn btn-outline-success" %></td>
+  <% else %>
+    <td><%= f.submit "変更を保存", class:"btn btn-outline-success" %></td>
+  <% end %>
+</tr>
 
 <script>
  $('#star').raty({
-   size     : 36,
+   size: 36,
    starOff:  '<%= asset_path('star-off.png') %>',
    starOn : '<%= asset_path('star-on.png') %>',
    starHalf: '<%= asset_path('star-half.png') %>',

@@ -20,3 +20,4 @@ ActiveStorage.start()
 
 window.jQuery = window.$ = require('jquery')
 require('./jquery_raty')
+require('./category')
