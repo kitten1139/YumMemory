@@ -3,30 +3,37 @@ class Admin::ItemCategoriesController < ApplicationController
 
   def index
     @large_category = LargeCategory.find(params[:large_category_id])
-    @item_categories = @large_category.item_categories
+    #空白値は表示しない
+    @item_categories = @large_category.item_categories.where.not(large_category_id: nil)
     @item_category = @item_categories.new
   end
 
   def create
     @large_category = LargeCategory.find(params[:large_category_id])
-    @item_categories = @large_category.item_categories
+    @item_categories = @large_category.item_categories.where.not(large_category_id: nil)
     @item_category = @item_categories.new(item_category_params)
     if @item_category.save
+      flash[:notice] = "登録が完了しました。"
       redirect_to admin_large_category_item_categories_path(@large_category)
     else
+      flash[:notice] = "カテゴリ(小分類)名を入力してください。"
       render :index
     end
   end
 
   def edit
     @item_category = ItemCategory.find(params[:id])
-    @large_category = @item_category.large_category
   end
 
   def update
-    item_category = ItemCategory.find(params[:id])
-    item_category.update(item_category_params)
-    redirect_to admin_large_category_item_categories_path(item_category.large_category)
+    @item_category = ItemCategory.find(params[:id])
+    if @item_category.update(item_category_params)
+      flash[:notice] = "更新が完了しました。"
+      redirect_to admin_large_category_item_categories_path(item_category.large_category)
+    else
+      flash[:notice] = "カテゴリ(小分類)名を入力してください。"
+      render :edit
+    end
   end
 
   def destroy

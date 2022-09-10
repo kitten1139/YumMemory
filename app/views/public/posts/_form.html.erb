@@ -7,6 +7,11 @@
 <%= f.label :item_category_id, "カテゴリ"  %>
 <%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;"}) %></br>
 
+<div class="" id="star">
+  <%= f.label :rate,'評価 :', class:"" %>
+  <%= f.hidden_field :rate, id: :review_star %>
+</div>
+
 <%= f.label :review_title, "レビュータイトル" %>
 <%= f.text_field :review_title %></br>
 
@@ -18,3 +23,14 @@
 <% else %>
   <%= f.submit "変更を保存", class:"btn btn-outline-success" %>
 <% end %>
+
+<script>
+ $('#star').raty({
+   size     : 36,
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   scoreName: 'post[rate]',
+   half: true,
+ });
+</script>

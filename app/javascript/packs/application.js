@@ -17,3 +17,6 @@ import '@fortawesome/fontawesome-free/js/all'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+window.jQuery = window.$ = require('jquery')
+require('./jquery_raty')
