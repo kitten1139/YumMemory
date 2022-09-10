@@ -17,12 +17,17 @@
             </li>
             <li>
               <%= link_to posts_path, class: "nav-link text-light" do %>
-                <i class="fas fa-search"></i>みんなの投稿一覧
+                <i class="fas fa-marker"></i>みんなの投稿一覧
               <% end %>
             </li>
             <li>
               <%= link_to "#", class: "nav-link text-light" do %>
                 <i class="fas fa-thumbs-up"></i>お気に入り
+              <% end %>
+            </li>
+            <li>
+              <%= link_to categories_path, class: "nav-link text-light" do %>
+                <i class="fas fa-search"></i>カテゴリで検索する
               <% end %>
             </li>
             <li>
@@ -45,7 +50,7 @@
             </li>
             <li>
               <%= link_to admin_large_categories_path, class: "nav-link text-light" do %>
-                <i class="fas fa-folder"></i>カテゴリ一覧
+                <i class="fas fa-folder"></i>カテゴリ一覧・追加
               <% end %>
             </li>
             <li>
