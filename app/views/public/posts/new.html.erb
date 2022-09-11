@@ -5,8 +5,11 @@
       <h4>新規投稿</h4>
         <tbody>
 
-        <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: [], large_category_id: nil %>
-
+          <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: [], large_category_id: nil %>
+          <tr>
+            <td></td>
+            <td><%= f.submit "新規投稿", class:"btn btn-outline-success" %></td>
+          </tr>
         </tbody>
     </table>
   <% end %>

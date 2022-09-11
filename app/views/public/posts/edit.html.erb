@@ -6,7 +6,10 @@
         <tbody>
 
         <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: @item_categories, large_category_id: @large_category.id %>
-
+         <tr>
+           <td></td>
+           <td><%= f.submit "変更を保存", class:"btn btn-outline-success" %></td>
+         </tr>
         </tbody>
     </table>
   <% end %>

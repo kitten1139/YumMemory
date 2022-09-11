@@ -35,14 +35,6 @@
 <tr>
   <td><%= f.label :review_body, "レビュー内容" %></td>
   <td><%= f.text_area :review_body %></td>
-</td>
-<tr>
-  <td></td>
-  <% if local_assigns[:post] %>
-    <td><%= f.submit "新規投稿", class:"btn btn-outline-success" %></td>
-  <% else %>
-    <td><%= f.submit "変更を保存", class:"btn btn-outline-success" %></td>
-  <% end %>
 </tr>
 
 <script>
@@ -52,6 +44,7 @@
    starOn : '<%= asset_path('star-on.png') %>',
    starHalf: '<%= asset_path('star-half.png') %>',
    scoreName: 'post[rate]',
+   score: <%= post.rate %>,
    half: true,
  });
 </script>
