@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <h5>みんなの投稿一覧(全<%= @posts.count%>件)</h5>
+      <% @posts.each do |post| %>
+        <div class="mb-2 text-center", style="float:left; margin-right: 100px">
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.get_item_image, size:"250x180" %>
+          <% end %>
+          <div id="star-rate<%= post.id %>">
+            <script>
+              $('#star-rate<%= post.id %>').empty();
+              $('#star-rate<%= post.id %>').raty({
+                size      : 36,
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half      : false,
+                readOnly: true,
+                score: '<%= post.rate %>',
+              });
+            </script>
+          </div>
+          <div style="word-wrap: break-word; width: 250px;">
+            <%= post.item_name %></br>
+          </div>
+          <div style="word-wrap: break-word; width: 250px;">
+            <%= image_tag post.user.get_profile_image, size:"50x50" %>
+            <%= post.user.nickname %>さん
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <ul class="pagination justify-content-center">
+    <%= paginate @posts %>
+  </ul>
+</div>
