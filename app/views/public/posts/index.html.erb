@@ -7,17 +7,17 @@
           <%= link_to post_path(post) do %>
             <%= image_tag post.get_item_image, size:"250x180" %>
           <% end %>
-          <div id="star-rate<%= post.id %>">
+          <div id="star<%= post.id %>">
             <script>
-              $('#star-rate<%= post.id %>').empty();
-              $('#star-rate<%= post.id %>').raty({
+              $('#star<%= post.id %>').empty();
+              $('#star<%= post.id %>').raty({
                 size      : 36,
                 starOff   : '<%= asset_path('star-off.png') %>',
                 starOn    : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half      : false,
-                readOnly: true,
-                score: '<%= post.rate %>',
+                starHalf  : '<%= asset_path('star-half.png') %>',
+                half      : true,
+                readOnly  : true,
+                score     : '<%= post.rate %>',
               });
             </script>
           </div>
