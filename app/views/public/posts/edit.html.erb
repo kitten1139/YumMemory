@@ -1,16 +1,25 @@
 <div class="container">
-  <%= flash[:notice] %>
-  <%= form_with model:@post, url: post_path(@post), method: :patch do |f| %>
-    <table style="border-collapse: separate; border-spacing: 70px 5px;">
-      <h4>投稿編集</h4>
-      <tbody>
-
-      <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: @item_categories, large_category_id: @large_category.id %>
-       <tr>
-         <td></td>
-         <td><%= f.submit "変更を保存", class:"btn btn-outline-success" %></td>
-       </tr>
-      </tbody>
-    </table>
-  <% end %>
+  <h4>投稿編集</h4>
+  <div class="row">
+    <div class="offset-md-3 col-md-6">
+    <%= flash[:notice] %>
+      <%= form_with model:@post, url: post_path(@post), method: :patch do |f| %>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:200px"></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: @item_categories, large_category_id: @large_category.id %>
+           <tr>
+             <td></td>
+             <td><%= f.submit "変更を保存", class:"btn btn-outline-success" %></td>
+           </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
 </div>
