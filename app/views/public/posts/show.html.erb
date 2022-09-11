@@ -7,6 +7,10 @@
       </div>
       <table style="margin-left: 50%">
         <tr>
+          <td>投稿日:</td>
+          <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
           <td>商品名:</td>
           <td><%= @post.item_name %></td>
         </tr>

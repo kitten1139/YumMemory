@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-    <h5>みんなの投稿一覧(全<%= @posts.count%>件)</h5>
+    <h5>みんなの投稿一覧(全<%= @total_posts %>件)</h5>
       <% @posts.each do |post| %>
-        <div class="mb-2 text-center", style="float:left; margin-right: 100px">
+        <div class="mb-2", style="float:left; margin-left: 80px">
           <%= link_to post_path(post) do %>
             <%= image_tag post.get_item_image, size:"250x180" %>
           <% end %>

@@ -22,6 +22,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(6)
+    @total_posts = Post.count
   end
 
   def show
@@ -37,6 +38,16 @@ class Public::PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to posts_path
+    else
+      @item_category = ItemCategory.find(@post.item_category_id)
+      @large_category = LargeCategory.find(@item_category.large_category_id)
+      @item_categories = ItemCategory.where(large_category_id: @large_category.id)
+      @large_categories = LargeCategory.all
+      render :edit
+    end
   end
 
   def destroy
