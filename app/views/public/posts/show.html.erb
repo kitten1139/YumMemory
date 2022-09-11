@@ -35,23 +35,29 @@
                });
              </script>
           </td>
-        </tr>
-        <tr>
-          <td>レビュータイトル:</td>
-          <td><%= @post.review_title %></td>
-        </tr>
-        <tr>
-          <td>レビュー内容:</td></br>
-          <td><%= @post.review_body %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <% if user_signed_in? && @post.user == current_user %>
+          </tr>
+          <tr>
+            <td>レビュータイトル:</td>
+            <td><%= @post.review_title %></td>
+          </tr>
+          <tr>
+            <td>レビュー内容:</td></br>
+            <td><%= @post.review_body %></td>
+          </tr>
+
+        <% if user_signed_in? && @post.user == current_user %>
+          <tr>
+            <td></td>
             <td><%= link_to "レビューを編集する", edit_post_path(@post), class: "btn btn-outline-success mt-3" %></td>
-          <% end %>
+          <tr>
+          <tr>
+            <td></td>
+            <td><%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mt-2" %></td>
+          </tr>
+        <% end %>
         </tr>
-      </table>
-      <button class="btn btn-outline-primary mb-3" onclick="history.back(-1)">一覧へ戻る</button>
+        </table>
+        <button class="btn btn-outline-primary mb-3" onclick="history.back(-1)">一覧へ戻る</button>
     </div>
   </div>
 </div>
