@@ -14,4 +14,8 @@ class Post < ApplicationRecord
     (item_image.attached?) ? item_image : 'item_no_image.jpg'
   end
 
+  def post_favorited_by?(user)
+    post_favorites.exists?(user_id: user.id)
+  end
+
 end

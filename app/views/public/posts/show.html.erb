@@ -14,6 +14,20 @@
             <td colspan="2"><%= image_tag @post.get_item_image, size:"300x200" %></td>
           </tr>
           <tr>
+            <td></td>
+            <td>
+            <% if @post.post_favorited_by?(current_user) %>
+              <%= link_to post_post_favorites_path(@post), method: :delete do %>
+                <p style="color: red;">♥<%= @post.post_favorites.count %></p>
+              <% end %>
+            <% else %>
+              <%= link_to post_post_favorites_path(@post), method: :post do %>
+                <p style="color: red">♡<%= @post.post_favorites.count %></p>
+              <% end %>
+            <% end %>
+            </td>
+          </tr>
+          <tr>
             <td>投稿日:</td>
             <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
