@@ -1,0 +1,35 @@
+<h4>検索結果</h4>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがUserの時 -->
+  <% if @range == "User" %>
+    <thead>
+      <th></th>
+      <th>ユーザー名</th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
+          <td><%= user.nickname %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
+    <thead>
+      <th></th>
+      <th>ユーザー名</th>
+      <th>商品名</th>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= image_tag post.get_item_image, size:"50x50" %></td>
+          <td><%= post.user.nickname %></td>
+          <td><%= post.item_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
