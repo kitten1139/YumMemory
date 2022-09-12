@@ -33,6 +33,11 @@ before_action :ensure_guest_user, only: [:edit]
     redirect_to root_path
   end
 
+  def my_posts
+    @posts = current_user.posts.order(created_at: :desc).page(params[:page]).per(6)
+    @total_posts = @posts.count
+  end
+
   private
 
   def user_params
