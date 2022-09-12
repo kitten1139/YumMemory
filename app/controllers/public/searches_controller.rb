@@ -11,6 +11,8 @@ class Public::SearchesController < ApplicationController
   end
 
   def large_category_search
+    @large_category = LargeCategory.find(params[:id])
+    @large_category_posts = @large_category.posts.page(params[:page]).per(8)
   end
 
   def item_category_search
