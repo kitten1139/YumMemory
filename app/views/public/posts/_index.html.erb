@@ -1,4 +1,4 @@
-    <% @posts.each do |post| %>
+    <% posts.each do |post| %>
       <div class="mb-2", style="float:left; margin-left:80px;">
         <%= link_to post_path(post) do %>
           <%= image_tag post.get_item_image, size:"250x180" %>
@@ -28,6 +28,3 @@
     <% end %>
   </div>
 </div>
-<ul class="pagination justify-content-center">
-  <%= paginate @posts %>
-</ul>

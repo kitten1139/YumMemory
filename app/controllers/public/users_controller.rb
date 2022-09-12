@@ -38,6 +38,13 @@ before_action :ensure_guest_user, only: [:edit]
     @total_posts = @posts.count
   end
 
+  def my_favorites
+    @user = User.find(params[:user_id])
+    post_favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
+    @posts = Post.find(post_favorites)
+    @total_posts = @posts.count
+  end
+
   private
 
   def user_params
