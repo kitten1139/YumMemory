@@ -27,82 +27,38 @@
             <% end %>
             </td>
           </tr>
-          <tr>
-            <td>投稿日:</td>
-            <td><%= @post.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-          <tr>
-            <td>商品名:</td>
-            <td><%= @post.item_name %></td>
-          </tr>
-          <tr>
-            <td>商品カテゴリ:</td>
-            <td><%= @post.item_category.name%></td>
-          </tr>
-          <tr>
-            <td>評価:</td>
-            <td>
-              <div id="star<%= @post.id%>">
-               <script>
-                $('#star<%= @post.id %>').empty();
-                $('#star<%= @post.id%>').raty({
-                   size      : 36,
-                   starOff   : '<%= asset_path('star-off.png') %>',
-                   starOn    : '<%= asset_path('star-on.png') %>',
-                   starHalf: '<%= asset_path('star-half.png') %>',
-                   half      : true,
-                   readOnly: true,
-                   score: <%= @post.rate %>,
-                 });
-               </script>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">レビュータイトル:</td>
-          </tr>
-          <tr>
-            <td colspan="2"><%= @post.review_title %></td>
-          </tr>
-          <tr>
-            <td>レビュー内容:</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2"><%= @post.review_body %></td>
-          </tr>
-        </tbody>
-      </table>
+          <%= render "show", post: @post %>
+
+      <div class="col-md-3 align-self-end">
+        <% if user_signed_in? && @post.user == current_user %>
+          <%= link_to "レビューを編集する", edit_post_path(@post), class: "btn btn-outline-success mt-3" %>
+          <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mt-2" %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-md-3 align-self-end">
-      <% if user_signed_in? && @post.user == current_user %>
-        <%= link_to "レビューを編集する", edit_post_path(@post), class: "btn btn-outline-success mt-3" %>
-        <%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mt-2" %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="offset-md-3 col-md-6">
-      <div>
-      <p>コメント件数：<%= @post.post_comments.count %></p>
-        <% @post.post_comments.each do |post_comment| %>
-          <p>
-          <%= image_tag post_comment.user.get_profile_image, size:"50x50" %>
-          <%= post_comment.user.nickname %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %>&emsp;
-          <%= post_comment.body %>
-          <% if post_comment.user == current_user %>
-            <%= link_to "削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn-sm btn-danger" %>
+    <div class="row">
+      <div class="offset-md-3 col-md-6">
+        <div>
+        <p>コメント件数：<%= @post.post_comments.count %></p>
+          <% @post.post_comments.each do |post_comment| %>
+            <p>
+            <%= image_tag post_comment.user.get_profile_image, size:"50x50" %>
+            <%= post_comment.user.nickname %>
+            <%= post_comment.created_at.strftime('%Y/%m/%d') %>&emsp;
+            <%= post_comment.body %>
+            <% if post_comment.user == current_user %>
+              <%= link_to "削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn-sm btn-danger" %>
+            <% end %>
+            </p>
           <% end %>
-          </p>
-        <% end %>
-      </div>
-      <div>
-        <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :body, rows: '5', placeholder: "コメントをここに", cols: "50"%>
-          <%= f.submit "送信する" %>
-        <% end %>
+        </div>
+        <div>
+          <%= form_with model: [@post, @post_comment] do |f| %>
+            <%= f.text_area :body, rows: '5', placeholder: "コメントをここに", cols: "50"%>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
       </div>
     </div>
+      <button class="btn btn-outline-primary mb-3" onclick="history.back(-1)">一覧へ戻る</button>
   </div>
-    <button class="btn btn-outline-primary mb-3" onclick="history.back(-1)">一覧へ戻る</button>
-</div>

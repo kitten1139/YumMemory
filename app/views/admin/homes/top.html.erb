@@ -3,7 +3,7 @@
     <div class="col-md-12">
     <h5>会員の投稿一覧(全<%= @total_posts %>件)</h5>
       <% @posts.each do |post| %>
-      <div class="mb-2", style="float:left; margin-left:80px;">
+      <div class="mb-2", style="float:left; margin-left:20px;">
         <%= link_to admin_review_path(post) do %>
           <%= image_tag post.get_item_image, size:"250x180" %>
         <% end %>
