@@ -1,6 +1,6 @@
 <div class="container">
+  <h5>みんなの投稿一覧(全<%= @total_posts %>件)</h5>
   <div class="row">
-    <div class="col-md-12">
-    <h5>みんなの投稿一覧(全<%= @total_posts %>件)</h5>
-      <%= render "index", posts: @posts %>
+    <%= render "index", posts: @posts %>
+  </div>
 </div>

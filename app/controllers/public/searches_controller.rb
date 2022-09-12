@@ -9,5 +9,8 @@ class Public::SearchesController < ApplicationController
       @posts = Post.looks(params[:search], params[:word])
     end
   end
+  
+  def large_category_searches
+  end
 
 end

@@ -3,7 +3,7 @@
   <% @large_categories.each do |large_category| %>
     <h3><%= link_to large_category.name, large_category_search_path(large_category), class:"text-dark" %></h3>
     <% large_category.item_categories.each do |item_category| %>
-      <h6>&emsp;・<%= item_category.name %></h6>
+      <h6>&emsp;・<%= link_to item_category.name, item_category_search_path(large_category.id, item_category.id) %></h6>
     <% end %>
   <% end %>
 </div>
