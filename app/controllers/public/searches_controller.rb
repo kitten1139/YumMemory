@@ -9,8 +9,13 @@ class Public::SearchesController < ApplicationController
       @posts = Post.looks(params[:search], params[:word])
     end
   end
-  
-  def large_category_searches
+
+  def large_category_search
+  end
+
+  def item_category_search
+    @item_category = ItemCategory.find(params[:id])
+    @item_category_posts = @item_category.posts.page(params[:page]).per(8)
   end
 
 end
