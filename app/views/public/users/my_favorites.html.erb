@@ -1,6 +1,9 @@
 <div class="container">
   <h5>マイお気に入り一覧(全<%= @total_posts %>件)</h5>
   <div class="row">
-      <%= render "public/posts/index", posts: @posts %>
+    <%= render "public/posts/index", posts: @posts %>
+  </div>
+  <div class="pagination d-flex justify-content-center">
+    <%= paginate @posts %>
   </div>
 </div>

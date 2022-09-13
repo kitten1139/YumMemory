@@ -1,9 +1,13 @@
 <div class="container">
   <h4>カテゴリ一覧</h4>
-  <% @large_categories.each do |large_category| %>
-    <h3><%= link_to large_category.name, large_category_search_path(large_category), class:"text-dark" %></h3>
-    <% large_category.item_categories.each do |item_category| %>
-      <h6>&emsp;・<%= link_to item_category.name, item_category_search_path(large_category.id, item_category.id) %></h6>
+  <div class="row">
+    <% @large_categories.each do |large_category| %>
+    <div class="col-12 col-md-5 ml-5">
+      <h3>・<%= link_to large_category.name, large_category_search_path(large_category), class: "text-dark" %></h3>
+      <% large_category.item_categories.each do |item_category| %>
+        <h6>&emsp;・<%= link_to item_category.name, item_category_search_path(large_category.id, item_category.id), class: "text-dark" %></h6>
+      <% end %>
+      </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

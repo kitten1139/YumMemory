@@ -6,35 +6,34 @@
   <h5><%= @user.nickname %>さんのプロフィール</h5>
 <% end %>
 
-<div class="card" style="width: 18rem;">
-  <div class="text-center">
+<div class="card-list-container py-5">
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= image_tag @user.get_profile_image, size:"100x100" %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <p class="card-title">
+            <span>ニックネーム:&emsp;<%= @user.nickname %></span></strong>
+          </p>
+          <p class="card-text">年齢:&emsp;<%= @user.age%>歳</p>
+          <p class="card-text">
+            <span><i class="fas fa-user"></i>性別:&emsp;<%= @user.gender %> |</span>
+            <span>居住地:&emsp;<%= @user.prefecture %></span>
+          </p>
+          <p class="card-text">好きな食べ物:&emsp;<%= @user.favorite_food %></p>
+          <p class="card-text">自己紹介:</br><%= @user.introduction %></p>
+        </div>
+      </div>
+    </div>
   </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        ニックネーム:&emsp;<%= @user.nickname %>
-      </li>
-      <li class="list-group-item">
-        年齢:&emsp;<%= @user.age%>歳
-      </li>
-      <li class="list-group-item">
-        性別:&emsp;<%= @user.gender %>
-      </li>
-      <li class="list-group-item">
-        居住地:&emsp;<%= @user.prefecture %>
-      </li>
-      <li class="list-group-item">
-        好きな食べ物:&emsp;<%= @user.favorite_food %>
-      </li>
-      <li class="list-group-item">
-        自己紹介:</br><%= @user.introduction %>
-      </li>
-    </ul>
 </div>
 
-<div class="btn-wrapper">
-  <% if user_signed_in? && @user == current_user && @user.nickname != "guestuser" %>
-    <%= link_to "プロフィール情報を編集/追加する", edit_user_path(current_user), class: "btn btn-outline-success" %>
-    <%= link_to "マイ投稿一覧を見る", user_my_posts_path(current_user), class: "btn btn-outline-secondary mt-3" %>
-  <% end %>
+<div class="d-flex justify-content-end mr-5 mb-5">
+  <div class="d-flex align-items-end flex-column">
+    <% if user_signed_in? && @user == current_user && @user.nickname != "guestuser" %>
+      <%= link_to "プロフィール情報を編集/追加する", edit_user_path(current_user), class: "btn btn-outline-success" %>
+      <%= link_to "マイ投稿一覧を見る", user_my_posts_path(current_user), class: "btn btn-outline-secondary mt-3" %>
+      <%= link_to "新規投稿する", new_post_path, class: "btn btn-outline-warning mt-3" %>
+    <% end %>
+  </div>
 </div>

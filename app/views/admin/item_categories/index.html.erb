@@ -4,7 +4,7 @@
     <%= flash[:notice] %>
     <%= form_with model: @item_category, url: admin_large_category_item_categories_path(@large_category) do |f| %>
       <b><%= f.label :name, "カテゴリ名" %></b>
-      <%= f.text_field :name, placeholder: "カテゴリ名(小分類)" %>
+      <%= f.text_field :name, placeholder: "カテゴリ名(小分類)", :size=>"60" %>
       <%= f.submit "新規登録", class: "btn btn-outline-warning" %>
     <% end %>
   </div>
@@ -21,4 +21,5 @@
       </ul>
     </h6>
   <% end %>
+  <button class="btn btn-outline-primary my-5" onclick="history.back(-1)">戻る</button>
 </div>

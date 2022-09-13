@@ -21,7 +21,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).per(8)
+    @posts = Post.page(params[:page]).per(24)
     @total_posts = Post.count
   end
 

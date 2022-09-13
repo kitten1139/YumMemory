@@ -1,7 +1,7 @@
 <% posts.each do |post| %>
-  <div class="col-12 col-md-3">
+  <div class="col-12 col-md-2">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.get_item_image, size:"250x180" %>
+      <%= image_tag post.get_item_image, size:"120x90" %>
     <% end %>
     <div id="star<%= post.id %>">
       <script>
@@ -17,12 +17,13 @@
         });
       </script>
     </div>
-    <div style="word-wrap:break-word; width:250px;">
+    <div style="word-wrap:break-word; width:120px;">
       <%= post.item_name %></br>
     </div>
-    <div style="word-wrap:break-word; width:250px;">
+    <div style="word-wrap:break-word; width:120px;">
       <%= image_tag post.user.get_profile_image, size:"50x50" %>
-      <%= post.user.nickname %>さん
     </div>
+    <div><%= post.user.nickname %>さん</div>
   </div>
 <% end %>
+

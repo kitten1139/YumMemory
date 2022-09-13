@@ -29,7 +29,7 @@ class Admin::ItemCategoriesController < ApplicationController
     @item_category = ItemCategory.find(params[:id])
     if @item_category.update(item_category_params)
       flash[:notice] = "更新が完了しました。"
-      redirect_to admin_large_category_item_categories_path(item_category.large_category)
+      redirect_to admin_large_category_item_categories_path(@item_category.large_category)
     else
       flash[:notice] = "カテゴリ(小分類)名を入力してください。"
       render :edit

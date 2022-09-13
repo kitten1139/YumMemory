@@ -6,9 +6,9 @@
 
     <%= form_with model: @item_category, url: admin_item_category_path(@item_category), method: :patch do |f| %>
       <b><%= f.label :name, "カテゴリ名" %></b>
-      <%= f.text_field :name, placeholder: "カテゴリ名" %>
+      <%= f.text_field :name, placeholder: "カテゴリ名", :size=>"60" %>
       <%= f.submit "変更を保存", class: "btn btn-outline-success" %>
-      <button class="btn btn-outline-primary" onclick="history.back(-1)">戻る</button>
     <% end %>
   </div>
+  <button class="btn btn-outline-primary mt-5" onclick="history.back(-1)">戻る</button>
 </div>

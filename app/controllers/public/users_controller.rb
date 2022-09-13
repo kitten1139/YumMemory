@@ -34,15 +34,15 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def my_posts
-    @posts = current_user.posts.order(created_at: :desc).page(params[:page]).per(6)
-    @total_posts = @posts.count
+    @posts = current_user.posts.order(created_at: :desc).page(params[:page]).per(24)
+    @total_posts = @posts.total_count
   end
 
   def my_favorites
     @user = User.find(params[:user_id])
     post_favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
-    @posts = Post.find(post_favorites)
-    @total_posts = @posts.count
+    @posts = Post.where(id: post_favorites).page(params[:page]).per(24)
+    @total_posts = @posts.total_count
   end
 
   private
