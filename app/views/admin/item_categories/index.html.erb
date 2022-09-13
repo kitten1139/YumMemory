@@ -10,16 +10,20 @@
   </div>
 
   <h4>カテゴリ一覧</h4>
-  <% @item_categories.each do |item_category| %>
-    <h6>
-      <ul class="category">
-        <li>
-          <%= item_category.name %>
-          <%= link_to "編集する", edit_admin_item_category_path(item_category.id), class: "btn btn-outline-success" %>
-          <%= link_to "削除する", admin_item_category_path(item_category), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
-        </li>
-      </ul>
-    </h6>
-  <% end %>
-  <button class="btn btn-outline-primary my-5" onclick="history.back(-1)">戻る</button>
+  <div class="row">
+    <% @item_categories.each do |item_category| %>
+      <div class="col-6">
+        <h6>
+          <ul class="category">
+            <li>
+              <%= item_category.name %>
+              <%= link_to "編集する", edit_admin_item_category_path(item_category.id), class: "btn btn-outline-success" %>
+              <%= link_to "削除する", admin_item_category_path(item_category), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+            </li>
+          </ul>
+        </h6>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "戻る", admin_large_categories_path, class: "btn btn-outline-primary mb-3" %>
 </div>

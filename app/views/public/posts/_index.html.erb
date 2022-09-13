@@ -13,7 +13,7 @@
           starHalf  : '<%= asset_path('star-half.png') %>',
           half      : true,
           readOnly  : true,
-          score     : '<%= post.rate %>',
+          score     : '<%= post.rate %>'
         });
       </script>
     </div>
@@ -23,7 +23,7 @@
     <div style="word-wrap:break-word; width:120px;">
       <%= image_tag post.user.get_profile_image, size:"50x50" %>
     </div>
-    <div><%= post.user.nickname %>さん</div>
+    <div><%= link_to post.user.nickname, user_path(post.user.id), class: "text-dark" %>さん</div>
   </div>
 <% end %>
 
