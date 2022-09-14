@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :user_sign_in?
 
   def new
     @post = Post.new
@@ -61,6 +61,13 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:item_category_id, :rate, :review_title, :review_body, :item_name, :item_image)
+  end
+
+  def user_sign_in?
+    unless user_signed_in?
+      redirect_to new_user_session_path
+      flash[:notice] = "サイトを使用するにはログインをしてください"
+    end
   end
 
 end

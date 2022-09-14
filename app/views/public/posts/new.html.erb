@@ -8,10 +8,9 @@
           <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: [], large_category_id: nil %>
           <tr>
             <td></td>
-            <td><%= f.submit "新規投稿", class: "btn btn-outline-success" %></td>
+            <td><%= f.submit "新規投稿", class: "btn btn-outline-success mb-5" %></td>
           </tr>
         </tbody>
     </table>
   <% end %>
-  <%= link_to "戻る", user_path(current_user), class: "btn btn-outline-primary mb-3" %>
 </div>

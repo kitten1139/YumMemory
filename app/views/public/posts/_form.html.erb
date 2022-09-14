@@ -4,7 +4,7 @@
 </tr>
 <tr>
   <td><%= f.label :item_name, "商品名" %></td>
-  <td><%= f.text_field :item_name, placeholder: "商品名" %></td>
+  <td><%= f.text_field :item_name, placeholder: "商品名", :size=>"60" %></td>
 </tr>
 <tr>
   <td><%= f.label :large_category_id, "大カテゴリ"  %></td>
@@ -30,11 +30,11 @@
 </tr>
 <tr>
   <td><%= f.label :review_title, "レビュータイトル" %></td>
-  <td><%= f.text_field :review_title %></td>
+  <td><%= f.text_field :review_title, :size=>"60" %></td>
 </tr>
 <tr>
   <td><%= f.label :review_body, "レビュー内容" %></td>
-  <td><%= f.text_area :review_body %></td>
+  <td><%= f.text_area :review_body, rows: "6", cols: "60" %></td>
 </tr>
 
 <script>

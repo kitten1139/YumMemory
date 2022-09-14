@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  before_action :authenticate_user!
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
   # GET /resource/sign_up
   # def new
   #   super
@@ -65,11 +63,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-  def after_update_path_for(resource)
-    about_path
-  end
-
   def after_sign_up_path_for(resource)
+    flash[:notice] = "アカウントを登録しました。ようこそYumMemoryへ！"
     about_path
   end
 end

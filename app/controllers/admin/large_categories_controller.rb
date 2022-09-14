@@ -1,5 +1,5 @@
 class Admin::LargeCategoriesController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :admin_sign_in?
 
   def index
     @large_categories = LargeCategory.all
@@ -44,4 +44,12 @@ class Admin::LargeCategoriesController < ApplicationController
   def large_category_params
     params.require(:large_category).permit(:name)
   end
+
+  def admin_sign_in?
+    unless admin_signed_in?
+      redirect_to new_admin_session_path
+      flash[:notice] = "サイトを使用するにはログインをしてください"
+    end
+  end
+
 end

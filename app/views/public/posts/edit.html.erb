@@ -1,10 +1,8 @@
 <div class="container">
   <%= flash[:notice] %>
   <h4>投稿編集</h4>
-  <div class="row">
-    <div class="offset-md-3 col-md-6 mb-5">
       <%= form_with model:@post, url: post_path(@post), method: :patch do |f| %>
-        <table>
+        <table style="border-collapse: separate; border-spacing: 70px 5px;">
           <thead>
             <tr>
               <th style="width:200px"></th>
@@ -15,7 +13,7 @@
             <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: @item_categories, large_category_id: @large_category.id %>
            <tr>
              <td></td>
-             <td><%= f.submit "変更を保存", class:"btn btn-outline-success" %></td>
+             <td><%= f.submit "変更を保存", class:"btn btn-outline-success mb-5" %></td>
            </tr>
           </tbody>
         </table>

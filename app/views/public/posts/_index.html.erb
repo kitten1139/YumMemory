@@ -1,7 +1,7 @@
 <% posts.each do |post| %>
-  <div class="col-12 col-md-2">
+  <div class="col-12 col-md-3 mb-3">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.get_item_image, size:"120x90" %>
+      <%= image_tag post.get_item_image, size:"200x200" %>
     <% end %>
     <div id="star<%= post.id %>">
       <script>
@@ -13,14 +13,14 @@
           starHalf  : '<%= asset_path('star-half.png') %>',
           half      : true,
           readOnly  : true,
-          score     : '<%= post.rate %>'
+          score     : '<%= post.rate %>',
         });
       </script>
     </div>
-    <div style="word-wrap:break-word; width:120px;">
+    <div style="word-wrap:break-word; width:200px;">
       <%= post.item_name %></br>
     </div>
-    <div style="word-wrap:break-word; width:120px;">
+    <div style="word-wrap:break-word; width:200px;">
       <%= image_tag post.user.get_profile_image, size:"50x50" %>
     </div>
     <div><%= link_to post.user.nickname, user_path(post.user.id), class: "text-dark" %>さん</div>

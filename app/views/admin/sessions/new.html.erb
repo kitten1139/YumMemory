@@ -1,6 +1,6 @@
 <div class="container">
+  <%= flash[:notice] %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
     <table class="ml-5 mb-5">
       <h4>ログイン</h4>
       <tbody>
