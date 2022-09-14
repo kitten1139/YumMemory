@@ -33,7 +33,8 @@
     <% if user_signed_in? && @user == current_user && @user.nickname != "guestuser" %>
       <%= link_to "プロフィール情報を編集/追加する", edit_user_path(current_user), class: "btn btn-outline-success" %>
       <%= link_to "マイ投稿一覧を見る", user_my_posts_path(current_user), class: "btn btn-outline-secondary mt-3" %>
-      <%= link_to "新規投稿する", new_post_path, class: "btn btn-outline-warning mt-3" %>
+      <!--turbolinksを部分的に無効化-->
+      <%= link_to "新規投稿する", new_post_path, data: {"turbolinks" => false}, class: "btn btn-outline-warning mt-3" %>
     <% end %>
   </div>
 </div>

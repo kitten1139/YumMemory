@@ -1,46 +1,45 @@
-      <tr>
-        <td>投稿日:</td>
-        <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
-      </tr>
-      <tr>
-        <td>商品名:</td>
-        <td><%= post.item_name %></td>
-      </tr>
-      <tr>
-        <td>商品カテゴリ:</td>
-        <td><%= post.item_category.name%></td>
-      </tr>
-      <tr>
-        <td>評価:</td>
-        <td>
-          <div id="star<%= post.id%>">
-           <script>
-            $('#star<%= post.id %>').empty();
-            $('#star<%= post.id%>').raty({
-               size      : 36,
-               starOff   : '<%= asset_path('star-off.png') %>',
-               starOn    : '<%= asset_path('star-on.png') %>',
-               starHalf: '<%= asset_path('star-half.png') %>',
-               half      : true,
-               readOnly: true,
-               score: <%= post.rate %>,
-             });
-           </script>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">レビュータイトル:</td>
-      </tr>
-      <tr>
-        <td colspan="2"><%= post.review_title %></td>
-      </tr>
-      <tr>
-        <td>レビュー内容:</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td colspan="2"><%= post.review_body %></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<tr>
+  <td>投稿日:</td>
+  <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
+</tr>
+<tr>
+  <td>商品名:</td>
+  <td><%= post.item_name %></td>
+</tr>
+<tr>
+  <td>商品カテゴリ:</td>
+  <td><%= post.item_category.name%></td>
+</tr>
+<tr>
+  <td>評価:</td>
+  <td class="pb-3">
+    <div id="star<%= post.id%>">
+      <script>
+        $('#star<%= post.id %>').empty();
+        $('#star<%= post.id%>').raty({
+        size      : 36,
+        starOff   : '<%= asset_path('star-off.png') %>',
+        starOn    : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half      : true,
+        readOnly: true,
+        score: <%= post.rate %>,
+        });
+      </script>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td>レビュータイトル:</td>
+  <td></td>
+</tr>
+<tr>
+  <td colspan="2", class="pb-1"><%= simple_format(post.review_title) %></td>
+</tr>
+<tr>
+  <td>レビュー内容:</td>
+  <td></td>
+</tr>
+<tr>
+  <td colspan="2", class="pb-1"><%= simple_format(post.review_body) %></td>
+</tr>
