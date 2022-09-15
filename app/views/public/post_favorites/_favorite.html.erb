@@ -1,9 +1,9 @@
 <% if post.post_favorited_by?(current_user) %>
-  <%= link_to post_post_favorites_path(post), method: :delete, class: "text-decoration-none", remote: true do %>
-    <p style="color:red;">♥<%= post.post_favorites.count %></p>
+  <%= link_to post_post_favorites_path(post), method: :delete, class: "text-decoration-none text-danger", remote: true do %>
+    <i class="fas fa-heart"></i><%= post.post_favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to post_post_favorites_path(post), method: :post, class: "text-decoration-none", remote: true do %>
-    <p style="color:red;">♡<%= post.post_favorites.count %></p>
+  <%= link_to post_post_favorites_path(post), method: :post, class: "text-decoration-none text-danger", remote: true do %>
+    <i class="far fa-heart"></i><%= post.post_favorites.count %>
   <% end %>
 <% end %>

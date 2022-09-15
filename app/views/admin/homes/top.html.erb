@@ -26,7 +26,7 @@
         <div style="word-wrap:break-word; width:120px;">
           <%= image_tag post.user.get_profile_image, size:"50x50" %>
         </div>
-        <div><%= post.user.nickname %>さん</div>
+        <div><%= link_to post.user.nickname, admin_user_path(post.user), class: "text-dark" %>さん</div>
       </div>
     <% end %>
   </div>

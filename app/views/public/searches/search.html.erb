@@ -8,12 +8,16 @@
       <th>ユーザー名</th>
     </thead>
     <tbody>
+    <% if @users.exists? %>
       <% @users.each do |user| %>
         <tr>
           <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
           <td><%= user.nickname %></td>
         </tr>
       <% end %>
+    <% else %>
+  　　<p>該当するユーザーは見つかりませんでした。</p>
+　  <% end %>
     </tbody>
   <% else %>
     <!--検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
@@ -23,6 +27,7 @@
       <th>商品名</th>
     </thead>
     <tbody>
+    <% if @posts.exists? %>
       <% @posts.each do |post| %>
         <tr>
           <td><%= image_tag post.get_item_image, size:"50x50" %></td>
@@ -30,6 +35,9 @@
           <td><%= post.item_name %></td>
         </tr>
       <% end %>
+    <% else %>
+  　　<p>該当する商品は見つかりませんでした。</p>
+　  <% end %>
     </tbody>
   <% end %>
 </table>

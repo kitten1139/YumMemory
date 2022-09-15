@@ -1,63 +1,62 @@
 <div class="container">
-      <h5><%= @user.nickname %>さんの会員情報編集</h5>
+  <%= flash[:notice] %>
+  <h5><%= @user.nickname %>さんの会員情報編集</h5>
 
-      <%= render 'error_messages', user: @user %>
+  <%= render 'error_messages', user: @user %>
 
-      <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
-        <table style="border-collapse: separate; border-spacing: 70px 5px;">
-          <tbody>
-            <tr>
-              <td><b>会員ID</b></td>
-              <td><%= @user.id %></td>
-            </tr>
-            <tr>
-              <td><b><%= f.label :image, "プロフィール画像" %></b></td>
-              <td><%= f.file_field :image, accept: "image/*" %></td>
-            </tr>
-            <tr>
-            <td><b><%= f.label :nickname, "ニックネーム" %></b></td>
-            <td><%= f.text_field :nickname %></td>
-            </tr>
-            <tr>
-              <td><b><%= f.label :email, "メールアドレス" %></b></td>
-              <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-            </tr>
-            <tr>
-              <td><b><%= f.label :prefecture, "居住地" %></b></td>
-              <td><%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'} %></td>
-            </tr>
-            <tr>
-              <td><b><%= f.label :gender, "性別" %></b></td>
-              <td><%= f.select :gender, User.genders.keys, {prompt: '選択してください'} %></td>
-            </tr>
-            <tr>
-              <td><b><%= f.label :age, "年齢" %></b></td>
-              <td><%= f.select :age, options_for_select((18..100).to_a) %></td>
-            </tr>
-            <tr>
-              <td><b><%= f.label :favorite_food, "好きな食べ物" %></b></td>
-              <td><%= f.text_field :favorite_food %></td>
-            </tr>
-            <tr>
-              <td><b><%= f.label :introduction, "自己紹介" %></b></td>
-              <td><%= f.text_area :introduction %></td>
-            </tr>
-            <tr>
-              <td><b><%= f.label :is_deleted, "会員ステータス" %></b></td>
-              <td>
-                <%= f.radio_button :is_deleted, :false %>
-                <%= f.label :is_deleted, "有効", class: "text-success font-weight-bold" %>
-                <%= f.radio_button :is_deleted, :true %>
-                <%= f.label :is_deleted, "退会", class: "text-danger font-weight-bold" %>
-              </td>
-            </tr>
-            <tr>
-              <td><%= link_to "会員情報詳細に戻る", admin_user_path(@user), class: "btn btn-outline-primary" %></td>
-              <td><%= f.submit "編集を保存", class: "btn btn-outline-success" %></td>
-            </tr>
-          </tbody>
-        </table>
-      <% end %>
-    </div>
-  </div>
+  <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
+    <table style="border-collapse: separate; border-spacing: 70px 5px;">
+      <tbody>
+        <tr>
+          <td><b>会員ID</b></td>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :image, "プロフィール画像" %></b></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+        <td><b><%= f.label :nickname, "ニックネーム" %></b></td>
+        <td><%= f.text_field :nickname, :size=>"40" %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :email, "メールアドレス" %></b></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"40" %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :prefecture, "居住地" %></b></td>
+          <td><%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'} %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :gender, "性別" %></b></td>
+          <td><%= f.select :gender, User.genders.keys, {prompt: '選択してください'} %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :age, "年齢" %></b></td>
+          <td><%= f.select :age, options_for_select((18..100).to_a), @user.age %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :favorite_food, "好きな食べ物" %></b></td>
+          <td><%= f.text_field :favorite_food, :size=>"60" %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :introduction, "自己紹介" %></b></td>
+          <td><%= f.text_area :introduction, rows: "6", cols: "60" %></td>
+        </tr>
+        <tr>
+          <td><b><%= f.label :is_deleted, "会員ステータス" %></b></td>
+          <td>
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効", class: "text-success font-weight-bold" %>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会", class: "text-danger font-weight-bold" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= link_to "会員情報詳細に戻る", admin_user_path(@user), class: "btn btn-outline-primary" %></td>
+          <td><%= f.submit "編集を保存", class: "btn btn-outline-success" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
 </div>

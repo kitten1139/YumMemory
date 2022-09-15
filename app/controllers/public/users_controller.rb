@@ -15,10 +15,13 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def update
-    if current_user.update(user_params)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "変更を保存しました"
       redirect_to user_path(current_user)
     else
-      redirect_to edit_user_path(current_user)
+      flash[:notice] = "変更に失敗しました"
+      render :edit
     end
   end
 
@@ -30,6 +33,7 @@ before_action :ensure_guest_user, only: [:edit]
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
+    flash[:notice] = "退会しました。ご利用ありがとうございました。"
     redirect_to root_path
   end
 

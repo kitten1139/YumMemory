@@ -11,13 +11,15 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="2"><%= image_tag @post.get_item_image, size:"300x200" %></td>
+            <td colspan="2"><%= image_tag @post.get_item_image, size:"300x300" %></td>
           </tr>
           <%= render "public/posts/show", post: @post %>
-      <div class="col-md-3 align-self-end">
-        <%= link_to "削除する", admin_review_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mt-2" %>
-      </div>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3 align-self-end">
+      <%= link_to "削除する", admin_review_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mt-2" %>
     </div>
   </div>
-      <button class="btn btn-outline-primary mb-3 ml-5" onclick="history.back(-1)">一覧へ戻る</button>
+    <%= link_to "一覧へ戻る", admin_path, class: "btn btn-outline-primary mb-3" %>
 </div>

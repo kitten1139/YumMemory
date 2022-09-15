@@ -65,6 +65,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     flash[:notice] = "アカウントを登録しました。ようこそYumMemoryへ！"
-    about_path
+    user_path(current_user)
   end
 end

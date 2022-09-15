@@ -9,7 +9,7 @@
       <tbody>
         <tr>
           <td><%= f.label :email, "メールアドレス" %></td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"40" %></td>
         </tr>
         <tr>
           <td>
@@ -20,12 +20,12 @@
             <% end %>
           </td>
           <td>
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, autocomplete: "new-password", :size=>"40" %>
           </td>
         </tr>
         <tr>
           <td><%= f.label :password_confirmation,"パスワード(確認用)" %></td>
-          <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"40" %></td>
         </tr>
         <tr>
           <td><%= f.label :image, "プロフィール画像" %></td>
@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <td><%= f.label :nickname, "ニックネーム" %></td>
-          <td><%= f.text_field :nickname %></td>
+          <td><%= f.text_field :nickname, :size=>"40" %></td>
         </tr>
         <tr>
           <td><%= f.label :prefecture, "居住地" %></td>
@@ -49,11 +49,11 @@
         </tr>
         <tr>
           <td><%= f.label :favorite_food, "好きな食べ物" %></td>
-          <td><%= f.text_field :favorite_food %></td>
+          <td><%= f.text_field :favorite_food, :size=>"60" %></td>
         </tr>
         <tr>
           <td><%= f.label :introduction, "自己紹介" %></td>
-          <td><%= f.text_area :introduction %></td>
+          <td><%= f.text_area :introduction, rows: "6", cols: "60" %></td>
         </tr>
         <tr>
           <td></td>

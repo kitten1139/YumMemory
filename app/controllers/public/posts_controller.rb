@@ -41,8 +41,10 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      flash[:notice] = "変更を保存しました"
       redirect_to posts_path
     else
+      flash[:notice] = "変更に失敗しました"
       @item_category = ItemCategory.find(@post.item_category_id)
       @large_category = LargeCategory.find(@item_category.large_category_id)
       @item_categories = ItemCategory.where(large_category_id: @large_category.id)
