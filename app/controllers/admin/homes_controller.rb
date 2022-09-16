@@ -2,7 +2,7 @@ class Admin::HomesController < ApplicationController
   before_action :admin_sign_in?
 
   def top
-    @posts = Post.page(params[:page]).per(6)
+    @posts = Post.page(params[:page]).per(24)
     @total_posts = Post.count
   end
 
