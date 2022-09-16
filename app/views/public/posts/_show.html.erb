@@ -1,6 +1,6 @@
 <tr>
   <td>投稿日:</td>
-  <td class="pb-1"><%= post.created_at.strftime('%Y/%m/%d') %></td>
+  <td class="pb-1"><%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
 </tr>
 <tr>
   <td>商品名:</td>
@@ -13,10 +13,10 @@
 <tr>
   <td>評価:</td>
   <td class="pb-3">
-    <div id="star<%= post.id%>">
+    <div id="star<%= post.id %>">
       <script>
         $('#star<%= post.id %>').empty();
-        $('#star<%= post.id%>').raty({
+        $('#star<%= post.id %>').raty({
         size      : 36,
         starOff   : '<%= asset_path('star-off.png') %>',
         starOn    : '<%= asset_path('star-on.png') %>',

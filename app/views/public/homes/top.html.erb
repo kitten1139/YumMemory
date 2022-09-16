@@ -1,1 +1,38 @@
-<%= flash[:notice] %>
+<div class="container">
+  <%= flash[:notice] %>
+  <h2 class="text-warning mt-3" style="font-family:serif;">新着レビュー</h2>
+  <div class="row">
+    <div class="offset-md-3 col-md-6">
+      <p>最新のレビューをチェック!!</p>
+      <p style="margin-left:350px;">
+        <%= link_to posts_path do %>
+          ⇒ログインして</br>すべてのレビューを見る
+        <% end %>
+      </p>
+      <table class="mb-5"style="word-break:break-all;">
+        <thead>
+          <tr>
+            <th style="width:200px"></th>
+            <th style="width:300px"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <%= link_to post_path(@post) do %>
+                <%= image_tag @post.get_item_image, size: "300x300" %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <%= image_tag @post.user.get_profile_image, size: "50x50" %>
+              <%= link_to @post.user.nickname, user_path(@post.user.id), class: "text-dark" %>さん
+            </td>
+          </tr>
+          <%= render "public/posts/show", post: @post %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
