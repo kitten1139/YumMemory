@@ -11,6 +11,7 @@ before_action :ensure_guest_user, only: [:edit]
     #編集するユーザーが本人でない場合はユーザー詳細ページにリダイレクトする
     unless @user == current_user
       redirect_to user_path(@user)
+      flash[:notice] = "他のユーザーの情報は編集することができません"
     end
   end
 
@@ -55,17 +56,18 @@ before_action :ensure_guest_user, only: [:edit]
     params.require(:user).permit(:nickname, :gender, :age, :prefecture, :introduction, :favorite_food, :profile_image)
   end
 
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.nickname == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
-    end
-  end
-
   def user_sign_in?
     unless user_signed_in?
       redirect_to new_user_session_path
       flash[:notice] = "サイトを使用するにはログインをしてください"
+    end
+  end
+
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.nickname == "guestuser"
+      redirect_to user_path(current_user)
+      flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
 

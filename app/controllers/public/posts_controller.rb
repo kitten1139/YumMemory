@@ -36,6 +36,10 @@ class Public::PostsController < ApplicationController
     @large_category = LargeCategory.find(@item_category.large_category_id)
     @item_categories = ItemCategory.where(large_category_id: @large_category.id)
     @large_categories = LargeCategory.all
+    unless @post.user == current_user
+      redirect_to post_path(@post)
+      flash[:notice] = "他のユーザーの投稿は編集できません"
+    end
   end
 
   def update
