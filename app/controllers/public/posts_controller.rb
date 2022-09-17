@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :user_sign_in?
+  before_action :ensure_guest_user, only:[:new, :create]
 
   def new
     @post = Post.new
@@ -73,6 +74,13 @@ class Public::PostsController < ApplicationController
     unless user_signed_in?
       redirect_to new_user_session_path
       flash[:notice] = "サイトを使用するにはログインをしてください"
+    end
+  end
+
+  def ensure_guest_user
+    if current_user.email == "guest@example.com"
+      redirect_to user_path(current_user)
+      flash[:notice] = "ゲストユーザーは投稿できません。"
     end
   end
 

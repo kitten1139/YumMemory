@@ -40,7 +40,7 @@
           <p>
           <%= image_tag post_comment.user.get_profile_image, size:"50x50" %>
           <%= post_comment.user.nickname %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>&emsp;
+          <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>&emsp;</br>
           <%= post_comment.body %>
           <% if post_comment.user == current_user %>
             <%= link_to "削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn-sm btn-danger" %>

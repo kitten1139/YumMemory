@@ -65,7 +65,7 @@ before_action :ensure_guest_user, only: [:edit]
 
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.nickname == "guestuser"
+    if @user.email == "guest@example.com"
       redirect_to user_path(current_user)
       flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end

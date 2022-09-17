@@ -3,7 +3,7 @@
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-12 col-md-3">
-        <%= link_to admin_review_path(post) do %>
+        <%= link_to admin_post_path(post) do %>
           <%= image_tag post.get_item_image, size:"200x200" %>
         <% end %>
         <div id="star<%= post.id %>">

@@ -26,7 +26,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '' => 'homes#top'
-    resources :reviews, only: [:show, :destroy]
+    resources :posts, only: [:show, :destroy] do
+      delete "post_comments/:id" => "posts#comment_destroy", as: "comment_destroy"
+    end
     resources :large_categories, except: [:new, :show] , shallow: true do
       resources :item_categories, except: [:new, :show]
     end

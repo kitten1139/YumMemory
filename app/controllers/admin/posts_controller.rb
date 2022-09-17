@@ -1,4 +1,4 @@
-class Admin::ReviewsController < ApplicationController
+class Admin::PostsController < ApplicationController
   before_action :admin_sign_in?
 
   def show
@@ -10,6 +10,15 @@ class Admin::ReviewsController < ApplicationController
     post.destroy
     redirect_to admin_path
   end
+
+  def comment_destroy
+    post = Post.find(params[:post_id])
+    post_comment = post.post_comments.find(params[:id])
+    post_comment.destroy
+    redirect_to admin_post_path(post)
+  end
+
+  private
 
   def admin_sign_in?
     unless admin_signed_in?
