@@ -1,14 +1,14 @@
 <tbody>
   <tr>
-    <td><%= f.label :item_image, "商品画像" %></td>
+    <td><%= f.label :item_image, "商品画像(任意)" %></td>
     <td><%= f.file_field :item_image, accept: 'image/*' %></td>
   </tr>
   <tr>
-    <td><%= f.label :item_name, "商品名" %></td>
+    <td><%= f.label :item_name, "商品名(*必須)" %></td>
     <td><%= f.text_field :item_name, placeholder: "商品名", :size=>"60" %></td>
   </tr>
   <tr>
-    <td><%= f.label :large_category_id, "大カテゴリ"  %></td>
+    <td><%= f.label :large_category_id, "大カテゴリ(*必須)"  %></td>
     <% if large_category_id.nil? %>
       <!--新規投稿画面で使用-->
       <td><%= f.collection_select(:large_category_id, large_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;", id: "large_category" }) %></td>
@@ -18,11 +18,11 @@
     <% end %>
   </tr>
   <tr>
-    <td><%= f.label :item_category_id, "小カテゴリ"  %></td>
+    <td><%= f.label :item_category_id, "小カテゴリ(*必須)"  %></td>
     <td><%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;", id: "item_category" }) %></td>
   </tr>
   <tr>
-    <td><%= f.label :rate, '評価', class:"" %></td>
+    <td><%= f.label :rate, "評価(*必須)", class:"" %></td>
     <td>
       <div class="" id="star">
         <%= f.hidden_field :rate, id: :rate %>

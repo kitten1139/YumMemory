@@ -1,5 +1,5 @@
 <div class="container">
-  <h6><%= @item_category.name %>一覧全(<%= @item_category.posts.count%>)件</h6>
+  <h6><%= @item_category.name %>一覧全(<%= @item_category.posts.count %>)件</h6>
   <div class="row">
     <%= render "public/posts/index", posts: @item_category.posts %>
   </div>

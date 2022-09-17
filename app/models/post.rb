@@ -20,7 +20,8 @@ class Post < ApplicationRecord
   def get_item_image
     (item_image.attached?) ? item_image : 'item_no_image.jpg'
   end
-
+  
+  #いいねされているかの判定
   def post_favorited_by?(user)
     post_favorites.exists?(user_id: user.id)
   end

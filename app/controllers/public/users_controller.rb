@@ -21,7 +21,7 @@ before_action :ensure_guest_user, only: [:edit]
       flash[:notice] = "変更を保存しました"
       redirect_to user_path(current_user)
     else
-      flash[:notice] = "変更に失敗しました"
+      flash[:notice] = "変更に失敗しました。*必須項目は必ず入力してください"
       render :edit
     end
   end

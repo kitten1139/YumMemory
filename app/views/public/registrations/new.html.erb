@@ -9,14 +9,14 @@
         <h4>新規会員登録</h4>
         <tbody>
           <tr>
-            <td><%= f.label :email, "メールアドレス" %></td>
+            <td><%= f.label :email, "メールアドレス(*必須)" %></td>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"40" %></td>
           </tr>
           <tr>
             <td>
               <%= f.label :password do %>
                 <% if @minimum_password_length %>
-                  パスワード(<%= @minimum_password_length %>文字以上)
+                  パスワード(<%= @minimum_password_length %>文字以上)(*必須)
                 <% end %>
               <% end %>
             </td>
@@ -25,35 +25,35 @@
             </td>
           </tr>
           <tr>
-            <td><%= f.label :password_confirmation,"パスワード(確認用)" %></td>
+            <td><%= f.label :password_confirmation,"パスワード(確認用)(*必須)" %></td>
             <td><%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"40" %></td>
           </tr>
           <tr>
-            <td><%= f.label :image, "プロフィール画像" %></td>
+            <td><%= f.label :image, "プロフィール画像(任意)" %></td>
             <td><%= f.file_field :image, accept: "image/*" %></td>
           </tr>
           <tr>
-            <td><%= f.label :nickname, "ニックネーム" %></td>
+            <td><%= f.label :nickname, "ニックネーム(*必須)" %></td>
             <td><%= f.text_field :nickname, :size=>"40" %></td>
           </tr>
           <tr>
-            <td><%= f.label :prefecture, "居住地" %></td>
+            <td><%= f.label :prefecture, "居住地(任意)" %></td>
             <td><%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'} %></td>
           </tr>
           <tr>
-            <td><%= f.label :gender, "性別" %></td>
+            <td><%= f.label :gender, "性別(任意)" %></td>
             <td><%= f.select :gender, User.genders.keys, {prompt: '選択してください'} %></td>
           </tr>
           <tr>
-            <td><%= f.label :age, "年齢" %></td>
+            <td><%= f.label :age, "年齢(*必須)" %></td>
             <td><%= f.select :age, options_for_select((18..100).to_a) %></td>
           </tr>
           <tr>
-            <td><%= f.label :favorite_food, "好きな食べ物" %></td>
+            <td><%= f.label :favorite_food, "好きな食べ物(任意)" %></td>
             <td><%= f.text_field :favorite_food, :size=>"60" %></td>
           </tr>
           <tr>
-            <td><%= f.label :introduction, "自己紹介" %></td>
+            <td><%= f.label :introduction, "自己紹介(任意)" %></td>
             <td><%= f.text_area :introduction, rows: "6", cols: "60" %></td>
           </tr>
           <tr>

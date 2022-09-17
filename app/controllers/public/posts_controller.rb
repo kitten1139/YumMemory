@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "商品を投稿しました"
       redirect_to post_path(@post.id)
     else
-      flash[:notice] = "商品の投稿に失敗しました"
+      flash[:notice] = "商品の投稿に失敗しました。*必須項目は必ず入力してください。"
       @large_categories = LargeCategory.all
       @post = Post.new
       render :new
@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "変更を保存しました"
       redirect_to posts_path
     else
-      flash[:notice] = "変更に失敗しました"
+      flash[:notice] = "変更に失敗しました。*必須項目は必ず入力してください"
       @item_category = ItemCategory.find(@post.item_category_id)
       @large_category = LargeCategory.find(@item_category.large_category_id)
       @item_categories = ItemCategory.where(large_category_id: @large_category.id)

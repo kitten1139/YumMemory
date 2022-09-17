@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <td><b><%= f.label :age, "年齢" %></b></td>
-          <td><%= f.select :age, options_for_select((18..100).to_a), @user.age %></td>
+          <td><%= f.select :age, options_for_select((18..100).to_a, @user.age) %></td>
         </tr>
         <tr>
           <td><b><%= f.label :favorite_food, "好きな食べ物" %></b></td>
