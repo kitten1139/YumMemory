@@ -39,7 +39,7 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def my_posts
-    @posts = current_user.posts.order(created_at: :desc).page(params[:page]).per(24)
+    @posts = current_user.posts.page(params[:page]).per(24)
     @total_posts = @posts.total_count
   end
 

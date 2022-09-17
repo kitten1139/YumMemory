@@ -10,6 +10,13 @@ class Post < ApplicationRecord
   validates :rate, presence: true
   validates :item_name, presence: true
 
+  scope :latest, -> {order(created_at: :desc)}#投稿日時が新しい順に取り出し
+  scope :old, -> {order(created_at: :asc)}#投稿日時が古い順に取り出し
+  scope :rate_count, -> {order(rate: :desc)}#評価が高い順に取り出し
+  scope :favorite_count, -> {sort_by{|x| #sort_byを使っていいねが多い順に取り出し
+  x.post_favorites.size
+  }.reverse}
+
   def get_item_image
     (item_image.attached?) ? item_image : 'item_no_image.jpg'
   end
