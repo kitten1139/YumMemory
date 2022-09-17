@@ -2,19 +2,18 @@
   <%= flash[:notice] %>
   <h3 class="text-center mt-3 mb-3">About</h3>
   <div class="row">
-    <div class="col-md-12">
-      <div class = "background-image">
-        <%= image_tag 'about_background.jpg', size:"500x450", style:"position: relative; left:700px;" %>
-        <p class="text-center p-4", style="position:absolute; top:70px; left:190px; height:50%; background-color:rgba(250,218,115,0.2);">
-          ようこそ、YumMemoryへ！！</br>
-          YumMemoryは、スーパーでのお買い物の時間をより楽しく便利にするための記録・レビューサイトです。</br>
-          購入した食品の画像や名前をレビューとともに記録しておくことができます。</br>
-          投稿は公開され誰でも見ることができるようになります。</br>
-          気になる商品やまた買いたい商品にはいいねをつけてまとめて閲覧することもできます。</br>
-          食卓のマンネリ化を解消し新しく美味しいを発見するのも楽しみの一つです。</br>
-          商品選びに迷った際にはYumMemoryをチェックしてみましょう。
-        </p>
-      </div>
+    <div class="col-8 mt-5">
+      <p class="text-center p-4", style="background-color:rgba(250,218,115,0.2);">
+        ようこそ、YumMemoryへ！！</br>
+        YumMemoryは、スーパーでのお買い物の時間をより楽しく便利にするための記録・レビューサイトです。</br>
+        購入した食品の画像や名前をレビューとともに記録しておくことができます。</br>
+        投稿は公開され誰でも見ることができるようになります。</br>
+        気になる商品やまた買いたい商品にはいいねをつけてまとめて閲覧することもできます。</br>
+        食卓のマンネリ化を解消し新しく美味しいを発見するのも楽しみの一つです。</br>
+        商品選びに迷った際にはYumMemoryをチェックしてみましょう。
+      </p>
+    </div>
+    <%= image_tag "about_background.jpg", size: "100x400", style: "position:relative;", class: "col-4" %>
     </div>
   </div>
 </div>
