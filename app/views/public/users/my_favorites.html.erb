@@ -1,5 +1,8 @@
 <div class="container">
   <h5>マイお気に入り一覧(全<%= @total_posts %>件)</h5>
+  <%= link_to "新しい順", user_my_favorites_path(latest: "true") %>
+  |<%= link_to "古い順", user_my_favorites_path(old: "true") %>
+  |<%= link_to "評価の高い順", user_my_favorites_path(rate_count: "true") %>
   <div class="row">
     <%= render "public/posts/index", posts: @posts %>
   </div>
