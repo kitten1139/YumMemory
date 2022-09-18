@@ -1,5 +1,5 @@
 # YumMemory
-![ロゴ]()
+![ロゴ](https://raw.githubusercontent.com/kitten1139/YumMemory/main/app/assets/images/logo.png)
 
 ## サイト概要
 ### サイトテーマ
@@ -31,7 +31,7 @@
 
 ## 設計書
 
-![ER図]()
+![ER図](https://raw.githubusercontent.com/kitten1139/YumMemory/main/app/assets/images/ER%E5%9B%B3.jpg)
 
 ## 主な機能
 
