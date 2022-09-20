@@ -39,14 +39,32 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def my_posts
-    @posts = current_user.posts.page(params[:page]).per(24)
+    #マイ投稿一覧画面の並び替え表示
+    if params[:latest]
+      @posts = current_user.posts.latest.page(params[:page]).per(24)
+    elsif params[:old]
+      @posts = current_user.posts.old.page(params[:page]).per(24)
+    elsif params[:rate_count]
+      @posts = current_user.posts.rate_count.page(params[:page]).per(24)
+    else
+      @posts = current_user.posts.page(params[:page]).per(24)
+    end
     @total_posts = @posts.total_count
   end
 
   def my_favorites
     @user = User.find(params[:user_id])
     post_favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
-    @posts = Post.where(id: post_favorites).page(params[:page]).per(24)
+    #マイ投稿一覧画面の並び替え表示
+    if params[:latest]
+      @posts = Post.where(id: post_favorites).latest.page(params[:page]).per(24)
+    elsif params[:old]
+      @posts = Post.where(id: post_favorites).old.page(params[:page]).per(24)
+    elsif params[:rate_count]
+      @posts = Post.where(id: post_favorites).rate_count.page(params[:page]).per(24)
+    else
+      @posts = Post.where(id: post_favorites).page(params[:page]).per(24)
+    end
     @total_posts = @posts.total_count
   end
 
