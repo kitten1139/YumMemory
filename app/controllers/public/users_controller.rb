@@ -10,7 +10,7 @@ before_action :ensure_guest_user, only: [:edit]
     @user = User.find(params[:id])
     #編集するユーザーが本人でない場合はユーザー詳細ページにリダイレクトする
     unless @user == current_user
-      redirect_to user_path(current_user)
+      redirect_to user_path(@user)
       flash[:notice] = "他のユーザーの情報は編集することができません"
     end
   end
