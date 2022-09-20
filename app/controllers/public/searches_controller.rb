@@ -13,12 +13,10 @@ before_action :user_sign_in?
 
   def large_category_search
     @large_category = LargeCategory.find(params[:id])
-    @large_category_posts = @large_category.posts.page(params[:page]).per(8)
   end
 
   def item_category_search
     @item_category = ItemCategory.find(params[:id])
-    @item_category_posts = @item_category.posts.page(params[:page]).per(8)
   end
 
   def user_sign_in?

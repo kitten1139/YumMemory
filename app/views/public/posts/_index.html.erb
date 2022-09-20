@@ -1,7 +1,7 @@
 <% posts.each do |post| %>
   <div class="col-12 col-md-3 mb-3">
     <%= link_to post_path(post) do %>
-      <%= image_tag post.get_item_image, size:"200x200" %>
+      <%= image_tag post.get_item_image, size: "200x200" %>
     <% end %>
     <div id="star<%= post.id %>">
       <script>
