@@ -10,16 +10,18 @@ before_action :ensure_guest_user, only: [:edit]
     @user = User.find(params[:id])
     #編集するユーザーが本人でない場合はユーザー詳細ページにリダイレクトする
     unless @user == current_user
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
       flash[:notice] = "他のユーザーの情報は編集することができません"
     end
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       flash[:notice] = "変更を保存しました"
-      redirect_to user_path(current_user)
+      #パスワードを変更した場合もsign_inの状態を維持
+      sign_in :user, @user, bypass: true
+      redirect_to user_path(@user)
     else
       flash[:notice] = "変更に失敗しました。*必須項目は必ず入力してください"
       render :edit
@@ -71,7 +73,7 @@ before_action :ensure_guest_user, only: [:edit]
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :gender, :age, :prefecture, :introduction, :favorite_food, :profile_image)
+    params.require(:user).permit(:nickname, :gender, :age, :prefecture, :introduction, :favorite_food, :profile_image, :email, :password)
   end
 
   def user_sign_in?

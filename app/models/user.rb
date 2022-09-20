@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :post_favorites, dependent: :destroy
 
-  validates :nickname, presence: true
+  validates :nickname, presence: true, length: { maximum: 20 }
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
