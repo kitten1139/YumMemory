@@ -19,8 +19,6 @@ before_action :ensure_guest_user, only: [:edit]
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "変更を保存しました"
-      #パスワードを変更した場合もsign_inの状態を維持
-      sign_in :user, @user, bypass: true
       redirect_to user_path(@user)
     else
       flash[:notice] = "変更に失敗しました。*必須項目は必ず入力してください"
@@ -73,7 +71,7 @@ before_action :ensure_guest_user, only: [:edit]
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :gender, :age, :prefecture, :introduction, :favorite_food, :profile_image, :email, :password)
+    params.require(:user).permit(:nickname, :gender, :age, :prefecture, :introduction, :favorite_food, :profile_image, :email)
   end
 
   def user_sign_in?
