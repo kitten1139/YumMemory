@@ -12,7 +12,7 @@ class Public::PostsController < ApplicationController
     @post.user = current_user
     if @post.save
       flash[:notice] = "商品を投稿しました"
-      redirect_to post_path(@post.id)
+      redirect_to posts_path
     else
       flash[:notice] = "商品の投稿に失敗しました。*必須項目は必ず入力してください。"
       @large_categories = LargeCategory.all
