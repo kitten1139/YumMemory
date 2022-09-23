@@ -27,8 +27,9 @@
     <!--検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
     <thead>
       <th>画像をクリック!</th>
-      <th>ユーザー名</th>
-      <th>商品名</th>
+      <th style="width:200px;">ユーザー名</th>
+      <th style="width:500px">商品名</th>
+      <th style="width:400px">スーパー名(購入場所)</th>
     </thead>
     <tbody>
     <% if @posts.exists? %>
@@ -41,6 +42,7 @@
           </td>
           <td><%= post.user.nickname %></td>
           <td><%= post.item_name %></td>
+          <td><%= post.store_name %></td>
         </tr>
       <% end %>
     <% else %>

@@ -37,7 +37,7 @@ class Post < ApplicationRecord
     elsif search == "backward_match"
       @post = Post.where("item_name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @post = Post.where("item_name LIKE?","%#{word}%")
+      @post = Post.where("item_name or store_name LIKE?","%#{word}%")
     else
       @post = Post.all
     end
