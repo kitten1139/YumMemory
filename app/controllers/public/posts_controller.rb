@@ -76,7 +76,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:item_category_id, :rate, :review_title, :review_body, :item_name, :item_image, :privacy)
+    params.require(:post).permit(:item_category_id, :rate, :review_title, :review_body, :item_name, :item_image, :privacy, :store_name)
   end
 
   def user_sign_in?

@@ -5,7 +5,7 @@
   </tr>
   <tr>
     <td><%= f.label :item_name, "商品名(*必須)" %></td>
-    <td><%= f.text_field :item_name, placeholder: "商品名", :size=>"60" %></td>
+    <td><%= f.text_field :item_name, :size=>"60" %></td>
   </tr>
   <tr>
     <td><%= f.label :large_category_id, "大カテゴリ(*必須)"  %></td>
@@ -28,6 +28,10 @@
         <%= f.hidden_field :rate, id: :rate %>
       </div>
     </td>
+  </tr>
+  <tr>
+    <td><%= f.label :store_name, "スーパー名(任意)" %></td>
+    <td><%= f.text_field :store_name, placeholder: "どこのスーパーで購入しましたか？", :size=>"40" %></td>
   </tr>
   <tr>
     <td><%= f.label :review_title, "レビュータイトル(任意)" %></td>
