@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2022_09_04_082145) do
     t.string "review_title"
     t.text "review_body"
     t.string "item_name", null: false
+    t.string "privacy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -14,10 +14,14 @@ class Post < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}#投稿日時が古い順に取り出し
   scope :rate_count, -> {order(rate: :desc)}#評価が高い順に取り出し
 
+  def self.privacy
+    Post.where(privacy: 0)
+  end
+
   def get_item_image
     (item_image.attached?) ? item_image : 'item_no_image.jpg'
   end
-  
+
   #いいねされているかの判定
   def post_favorited_by?(user)
     post_favorites.exists?(user_id: user.id)

@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :review_title
       t.text :review_body
       t.string :item_name, null: false
+      t.string :privacy
 
       t.timestamps
     end

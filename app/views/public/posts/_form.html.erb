@@ -38,6 +38,10 @@
     <td><%= f.text_area :review_body, rows: "6", cols: "60" %></td>
   </tr>
   <tr>
+    <td><%= f.label :privacy, "公開/非公開設定(必須)" %></td>
+    <td><%= f.select :privacy, [["公開", 0], ["非公開", 1]] %></td>
+  </tr>
+  <tr>
     <td></td>
     <td>
       <% if post.new_record? %>
