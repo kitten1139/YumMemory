@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    #投稿一覧画面の並び替え表示
+    #投稿一覧画面(公開投稿)の並び替え表示
     if params[:latest]
       @posts = Post.privacy.latest.page(params[:page]).per(24)
     elsif params[:old]

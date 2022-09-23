@@ -1,7 +1,7 @@
 <div class="container">
-  <h6><%= @item_category.name %>一覧全(<%= @item_category.posts.count %>)件</h6>
+  <h6><%= @item_category.name %>一覧全(<%= @item_category.posts.privacy.count %>)件</h6>
   <div class="row">
-    <%= render "public/posts/index", posts: @item_category.posts %>
+    <%= render "public/posts/index", posts: @item_category.posts.privacy %>
   </div>
   <%= link_to "カテゴリ一覧へ戻る", categories_path, class: "btn btn-outline-primary mb-5" %>
 </div>

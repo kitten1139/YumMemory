@@ -7,7 +7,7 @@ before_action :user_sign_in?
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
     else
-      @posts = Post.looks(params[:search], params[:word])
+      @posts = Post.privacy.looks(params[:search], params[:word])
     end
   end
 
