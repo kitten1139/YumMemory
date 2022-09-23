@@ -16,7 +16,7 @@
         <% @users.each do |user| %>
           <tr>
             <th scope="row"><%= user.id %></th>
-            <td><%= image_tag user.get_profile_image, size:"50x50" %></td>
+            <td><%= image_tag user.get_profile_image, class: "rounded-circle", size: "50x50" %></td>
             <td><%= link_to admin_user_path(user), style: "color: #000; text-decoration: underline;" do %>
                   <%= user.nickname %>
                 <% end %>

@@ -20,7 +20,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <%= image_tag @post.user.get_profile_image, size: "50x50" %>
+              <%= image_tag @post.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
               <%= link_to @post.user.nickname, user_path(@post.user.id), class: "text-dark" %>さん
             </td>
           </tr>
