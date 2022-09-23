@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
     else
       @posts = Post.privacy.page(params[:page]).per(24)
     end
-    @total_posts = Post.count
+    @total_posts = Post.privacy.count
   end
 
   def show
