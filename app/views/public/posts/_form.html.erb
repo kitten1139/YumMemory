@@ -22,7 +22,7 @@
     <td><%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;", id: "item_category" }) %></td>
   </tr>
   <tr>
-    <td><%= f.label :rate, "評価(*必須)", class:"" %></td>
+    <td><%= f.label :rate, "評価(*必須)", class: "" %></td>
     <td>
       <div class="" id="star">
         <%= f.hidden_field :rate, id: :rate %>

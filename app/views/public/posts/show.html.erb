@@ -27,7 +27,8 @@
 
     <div class="col-md-3 align-self-end">
       <% if user_signed_in? && @post.user == current_user %>
-        <div><%= link_to "投稿を編集する", edit_post_path(@post), class: "btn btn-outline-success mt-3" %></div>
+        <!--turbolinksを部分的に無効化-->
+        <div><%= link_to "投稿を編集する", edit_post_path(@post), data: {"turbolinks" => false}, class: "btn btn-outline-success mt-3" %></div>
         <div><%= link_to "削除する", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger mt-2" %></div>
       <% end %>
     </div>
