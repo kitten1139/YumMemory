@@ -39,7 +39,7 @@
       <p>コメント件数：<%= @post.post_comments.count %></p>
         <% @post.post_comments.each do |post_comment| %>
           <p>
-          <%= image_tag post_comment.user.get_profile_image, size:"50x50" %>
+          <%= image_tag post_comment.user.get_profile_image, size: "50x50" %>
           <%= post_comment.user.nickname %>
           <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>&emsp;</br>
           <%= post_comment.body %>
