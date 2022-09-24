@@ -20,8 +20,8 @@
             <span><i class="fas fa-user"></i>性別:&emsp;<%= @user.gender %> |</span>
             <span>居住地:&emsp;<%= @user.prefecture %></span>
           </p>
-          <p class="card-text">好きな食べ物:&emsp;<%= @user.favorite_food %></p>
-          <p class="card-text">自己紹介:</br><%= @user.introduction %></p>
+          <p class="card-text">好きな食べ物:&emsp;<%= simple_format(@user.favorite_food) %></p>
+          <p class="card-text">自己紹介:</br><%= simple_format(@user.introduction) %></p>
         </div>
       </div>
     </div>
