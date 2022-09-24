@@ -4,8 +4,8 @@
   <!--検索対象モデルがUserの時 -->
   <% if @range == "User" %>
     <thead>
-      <th>画像をクリック!</th>
-      <th>ユーザー名</th>
+      <th style="width:500px;">画像をクリック!</th>
+      <th style="width:600px;">ユーザー名</th>
     </thead>
     <tbody>
     <% if @users.exists? %>
@@ -46,7 +46,7 @@
         </tr>
       <% end %>
     <% else %>
-  　　<p>該当する商品は見つかりませんでした。</p>
+  　　<p>該当する商品/スーパーは見つかりませんでした。</p>
 　  <% end %>
     </tbody>
   <% end %>
