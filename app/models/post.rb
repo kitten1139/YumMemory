@@ -29,19 +29,9 @@ class Post < ApplicationRecord
     post_favorites.exists?(user_id: user.id)
   end
 
-  # 商品名またはスーパー名でキーワード検索の検索方法分岐
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @post = Post.where("item_name LIKE?", "#{word}").or(Post.where("store_name LIKE?","%#{word}%"))
-    elsif search == "forward_match"
-      @post = Post.where("item_name LIKE?","#{word}%").or(Post.where("store_name LIKE?","%#{word}%"))
-    elsif search == "backward_match"
-      @post = Post.where("item_name LIKE?","%#{word}").or(Post.where("store_name LIKE?","%#{word}%"))
-    elsif search == "partial_match"
-      @post = Post.where("item_name LIKE?","%#{word}%").or(Post.where("store_name LIKE?","%#{word}%"))
-    else
-      @post = Post.all
-    end
+  # 商品名またはスーパー名でキーワード検索
+  def self.looks(word)
+    @post = Post.where("item_name LIKE?","%#{word}%").or(Post.where("store_name LIKE?","%#{word}%"))
   end
 
 end

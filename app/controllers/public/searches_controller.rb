@@ -5,9 +5,9 @@ before_action :user_sign_in?
     #検索モデルUser or Postで条件分岐
     @range = params[:range]
     if @range == "User"
-      @users = User.looks(params[:search], params[:word])
+      @users = User.looks(params[:word])
     else
-      @posts = Post.privacy.looks(params[:search], params[:word])
+      @posts = Post.privacy.looks(params[:word])
     end
   end
 
