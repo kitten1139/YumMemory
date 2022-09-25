@@ -55,7 +55,7 @@ before_action :ensure_guest_user, only: [:edit]
   def my_favorites
     @user = User.find(params[:user_id])
     post_favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
-    #マイ投稿一覧画面の並び替え表示
+    #お気に入り投稿一覧画面の並び替え表示
     if params[:latest]
       @posts = Post.where(id: post_favorites).latest.page(params[:page]).per(24)
     elsif params[:old]
