@@ -19,7 +19,7 @@ class Post < ApplicationRecord
     Post.where(privacy: 0)
   end
 
-　#商品画像
+  #商品画像
   def get_item_image
     (item_image.attached?) ? item_image : 'item_no_image.jpg'
   end
