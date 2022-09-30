@@ -65,3 +65,16 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
+## ポートフォリオ閲覧用アカウント
+### 会員側
+#### <メールアドレス>
+a-chan@yummemory
+#### <パスワード>
+demono.2
+
+### 管理者側
+#### <メールアドレス>
+admin@yummemory
+#### <パスワード>
+yummemoadmin
