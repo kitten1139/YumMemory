@@ -47,5 +47,11 @@
 </tr>
 <tr>
   <!--新規投稿画面での文章の改行を反映して表示-->
-  <td colspan="2"><%= simple_format(post.review_body) %></td>
+  <td colspan="2" class="sentiment-score">
+    <!--レビュー内容が投稿されていた場合のみスコアを表示-->
+    <% if post.score.present? %>
+      <span class="text-info">感情分析スコア[<%= post.score %>]</span></br>
+    <% end %>
+    <%= simple_format(post.review_body) %>
+  </td>
 </tr>

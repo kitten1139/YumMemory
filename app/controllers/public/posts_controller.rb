@@ -9,6 +9,8 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    #送信されたレビュー内容からscoreを設定
+    @post.score = Language.get_data(post_params[:review_body])
     @post.user = current_user
     if @post.save
       flash[:notice] = "商品を投稿しました"
@@ -54,6 +56,8 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    #送信されたレビュー内容からscoreを再設定
+    @post.score = Language.get_data(post_params[:review_body])
     if @post.update(post_params)
       flash[:notice] = "変更を保存しました"
       redirect_to posts_path
