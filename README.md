@@ -69,7 +69,7 @@
 ## ポートフォリオ閲覧用アカウント
 ### 会員側
 #### <メールアドレス>
-a-chan@yummemory
+a-chan@yummemory.com
 #### <パスワード>
 demono.2
 
