@@ -9,6 +9,12 @@
         <%= link_to admin_post_path(post) do %>
           <%= image_tag post.get_item_image, size: "200x200" %>
         <% end %>
+        <!--スコアの値に応じて色分け-->
+        <% if post.score >= 0 %>
+          <div class="text-info">ポジティブスコア[<%= post.score %>]</div>
+        <% else %>
+          <div class="text-danger">ネガティブスコア[<%= post.score %>]</div>
+        <% end %>
         <div>コメント件数：<%= post.post_comments.count %></div>
         <div id="star<%= post.id %>">
           <script>

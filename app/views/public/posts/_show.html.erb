@@ -48,7 +48,12 @@
 <tr>
   <!--新規投稿画面での文章の改行を反映して表示-->
   <td colspan="2" class="sentiment-score">
-    <span class="text-info">感情分析スコア[<%= post.score %>]</span></br>
+    <!--スコアの値に応じて色分け-->
+    <% if post.score >= 0 %>
+      <span class="text-info">ポジティブスコア[<%= post.score %>]</span></br>
+    <% else %>
+      <span class="text-danger">ネガティブスコア[<%= post.score %>]</span></br>
+    <% end %>
     <%= simple_format(post.review_body) %>
   </td>
 </tr>
