@@ -1,5 +1,9 @@
 <footer style="margin-top:50px;">
+<% if admin_signed_in? %>
+  <div class="container-fluid fixed-bottom" style="background-color:#00c7ce;">
+<% else %>
   <div class="container-fluid fixed-bottom" style="background-color:#ff9933;">
+<% end %>
     <div class="row">
       <div class="mx-auto">
         <p><small>&copy; YumMemory</small></p>
