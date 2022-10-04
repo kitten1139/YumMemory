@@ -9,13 +9,16 @@
         <%= link_to admin_post_path(post) do %>
           <%= image_tag post.get_item_image, size: "200x200" %>
         <% end %>
+        <div style="word-wrap:break-word; width:200px;">
+          <b><%= post.item_name %></b></br>
+        </div>
+        <div class="small">コメント件数：<%= post.post_comments.count %></div>
         <!--スコアの値に応じて色分け-->
         <% if post.score >= 0 %>
-          <div class="text-info">ポジティブスコア[<%= post.score %>]</div>
+          <div class="text-info font-weight-bold">ポジティブスコア[<%= post.score %>]</div>
         <% else %>
-          <div class="text-danger">ネガティブスコア[<%= post.score %>]</div>
+          <div class="text-danger font-weight-bold">ネガティブスコア[<%= post.score %>]</div>
         <% end %>
-        <div>コメント件数：<%= post.post_comments.count %></div>
         <div id="star<%= post.id %>">
           <script>
             $('#star<%= post.id %>').empty();
@@ -29,9 +32,6 @@
               score     : '<%= post.rate %>',
             });
           </script>
-        </div>
-        <div style="word-wrap:break-word; width:200px;">
-          <%= post.item_name %></br>
         </div>
         <div style="word-wrap:break-word; width:200px;">
           <%= image_tag post.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
