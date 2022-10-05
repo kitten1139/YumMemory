@@ -1,6 +1,5 @@
 # YumMemory
-![ロゴ](https://raw.githubusercontent.com/kitten1139/YumMemory/main/app/assets/images/logo.png)
-
+<img src="https://raw.githubusercontent.com/kitten1139/YumMemory/main/app/assets/images/logo.png" width="500px" height="350px">
 ## サイト概要
 ### サイトテーマ
 スーパーで購入した商品(食品)を記録・レビューするサイト。
@@ -60,21 +59,25 @@
 
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## ポートフォリオ閲覧用アカウント
-### 会員側
-#### <メールアドレス>
+## 利用ガイド
+### アプリケーションURL
+#### [YumMemory(ヤムメモリー)](54.199.200.223)
+
+### ポートフォリオ閲覧用アカウント
+#### 会員側
+##### <メールアドレス>
 a-chan@yummemory.com
-#### <パスワード>
+##### <パスワード>
 demono.2
 
-### 管理者側
-#### <メールアドレス>
+#### 管理者側
+##### <メールアドレス>
 admin@yummemory
-#### <パスワード>
+##### <パスワード>
 yummemoadmin
