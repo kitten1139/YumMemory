@@ -1,5 +1,6 @@
 # YumMemory
-<img src="https://raw.githubusercontent.com/kitten1139/YumMemory/main/app/assets/images/logo.png" width="500px" height="350px">
+<img src="https://raw.githubusercontent.com/kitten1139/YumMemory/main/app/assets/images/logo.png" width="500px" height="350px" />
+
 ## サイト概要
 ### サイトテーマ
 スーパーで購入した商品(食品)を記録・レビューするサイト。
