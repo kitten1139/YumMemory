@@ -1,16 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'categories/index'
-  end
-  namespace :admin do
-    get 'item_categories/index'
-    get 'item_categories/edit'
-  end
-  namespace :admin do
-    get 'large_categories/index'
-    get 'large_categories/edit'
-  end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
