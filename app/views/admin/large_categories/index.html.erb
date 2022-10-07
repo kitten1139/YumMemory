@@ -6,7 +6,7 @@
 
     <%= form_with model: @large_category, url: admin_large_categories_path do |f| %>
       <b><%= f.label :name, "カテゴリ名" %></b>
-      <%= f.text_field :name, placeholder: "カテゴリ名(大分類)", :size=>"60" %>
+      <%= f.text_field :name, placeholder: "カテゴリ名(大分類)", :size=>"40" %>
       <%= f.submit "新規登録", class: "btn btn-outline-warning" %>
     <% end %>
   </div>

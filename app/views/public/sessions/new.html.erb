@@ -1,10 +1,10 @@
 <div class="container">
   <!--ログインしていない場合のフラッシュメッセージ表示-->
   <%= flash[:notice] %>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <h4>ログイン</h4>
-    <div class="row">
-      <div class="col-md-12">
+  <h4>ログイン</h4>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <table>
           <tbody>
             <tr>
@@ -19,7 +19,7 @@
               <td>
                 <% if devise_mapping.rememberable? %>
                   <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me, "(ログイン状態を維持する)" %>
+                  <%= f.label :remember_me, "(ログイン状態を維持する)", class: "mr-3" %>
                 <% end %>
               </td>
             </tr>
@@ -30,14 +30,14 @@
               </td>
             </tr>
             <tr>
-              <td><h5>会員登録がお済でない方</h5></td>
+              <td><b style="background-color:#eee;">会員登録がお済でない方</b></td>
             </tr>
             <tr>
               <td class="text-center"><%= render "public/shared/links" %>からログインしてください。</td>
             </tr>
           </tbody>
         </table>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

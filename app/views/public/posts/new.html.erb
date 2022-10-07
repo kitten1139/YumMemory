@@ -1,9 +1,13 @@
 <div class="container">
   <%= flash[:notice] %>
   <h4>新規投稿</h4>
-  <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-    <table style="border-collapse: separate; border-spacing: 70px 5px;">
-      <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: [], large_category_id: nil %>
-    </table>
-  <% end %>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+        <table>
+          <%= render 'form', post: @post, f: f, large_categories: @large_categories, item_categories: [], large_category_id: nil %>
+        </table>
+      <% end %>
+    </div>
+  </div>
 </div>

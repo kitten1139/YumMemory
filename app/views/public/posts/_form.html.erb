@@ -5,21 +5,21 @@
   </tr>
   <tr>
     <td><%= f.label :item_name, "商品名(*必須)" %></td>
-    <td><%= f.text_field :item_name, :size=>"60" %></td>
+    <td><%= f.text_field :item_name, :size=>"30" %></td>
   </tr>
   <tr>
     <td><%= f.label :large_category_id, "大カテゴリ(*必須)"  %></td>
     <% if large_category_id.nil? %>
       <!--新規投稿画面で使用-->
-      <td><%= f.collection_select(:large_category_id, large_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;", id: "large_category" }) %></td>
+      <td><%= f.collection_select(:large_category_id, large_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:270px;", id: "large_category" }) %></td>
     <% else %>
     　<!--投稿編集画面で使用-->
-      <td><%= f.collection_select(:large_category_id, large_categories, :id, :name, { selected: large_category_id }, {style: "width:300px;", id: "large_category" }) %></td>
+      <td><%= f.collection_select(:large_category_id, large_categories, :id, :name, { selected: large_category_id }, {style: "width:270px;", id: "large_category" }) %></td>
     <% end %>
   </tr>
   <tr>
     <td><%= f.label :item_category_id, "小カテゴリ(*必須)"  %></td>
-    <td><%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:300px;", id: "item_category" }) %></td>
+    <td><%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:270px;", id: "item_category" }) %></td>
   </tr>
   <tr>
     <td><%= f.label :rate, "評価(*必須)", class: "" %></td>
@@ -31,15 +31,15 @@
   </tr>
   <tr>
     <td><%= f.label :store_name, "スーパー名(任意)" %></td>
-    <td><%= f.text_field :store_name, placeholder: "どこのスーパーで購入しましたか？", :size=>"40" %></td>
+    <td><%= f.text_field :store_name, placeholder: "どこのスーパーで購入しましたか？", :size=>"30" %></td>
   </tr>
   <tr>
-    <td><%= f.label :review_title, "レビュータイトル(任意)" %></td>
-    <td><%= f.text_field :review_title, :size=>"60" %></td>
+    <td class="pr-5"><%= f.label :review_title, "レビュータイトル(任意)" %></td>
+    <td><%= f.text_field :review_title, :size=>"30" %></td>
   </tr>
   <tr>
     <td><%= f.label :review_body, "レビュー内容(任意)" %></td>
-    <td><%= f.text_area :review_body, rows: "6", cols: "60" %></td>
+    <td><%= f.text_area :review_body, rows: "6", cols: "30" %></td>
   </tr>
   <tr>
     <td><%= f.label :privacy, "公開/非公開設定(必須)" %></td>

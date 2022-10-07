@@ -4,7 +4,7 @@
   <%= flash[:notice] %>
     <%= form_with model: @large_category, url: admin_large_category_path(@large_category), method: :patch do |f| %>
       <b><%= f.label :name, "カテゴリ名" %></b>
-      <%= f.text_field :name, placeholder: "カテゴリ名", :size=>"60" %>
+      <%= f.text_field :name, placeholder: "カテゴリ名", :size=>"40" %>
       <%= f.submit "変更を保存", class: "btn btn-outline-success" %>
     <% end %>
   </div>

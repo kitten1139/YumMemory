@@ -1,56 +1,54 @@
 <div class="container">
   <%= flash[:notice] %>
   <h5>マイプロフィールの編集</h5>
-  <%= form_with model: @user, method: :patch do |f| %>
-    <table style="border-collapse:separate; border-spacing:70px 5px;">
-      <thead>
-        <tr>
-          <th style="width:220px;"></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= f.label :profile_image, "プロフィール画像(任意)" %></td>
-          <td><%= f.file_field :profile_image, accept: "image/*" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :nickname, "ニックネーム(*必須)" %></td>
-          <td><%= f.text_field :nickname, placeholder: "20文字以内", :size=>"40" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :email, "メールアドレス(*必須)" %></td>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"40" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :prefecture, "居住地(任意)" %></td>
-          <td><%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'} %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :gender, "性別(任意)" %></td>
-          <td><%= f.select :gender, User.genders.keys, {prompt: '選択してください'} %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :age, "年齢(*必須)" %></td>
-          <!--編集前の登録年齢をプルダウン選択の初期値で表示-->
-          <td><%= f.select :age, options_for_select((18..100).to_a, @user.age) %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :favorite_food, "好きな食べ物(任意)" %></td>
-          <td><%= f.text_field :favorite_food, :size=>"60" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :introduction, "自己紹介(任意)" %></td>
-          <td><%= f.text_area :introduction, rows: "6", cols: "60" %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="actions">
-            <%= f.submit "変更を保存する", class: "btn btn-outline-success mr-5" %>
-            <%= link_to "退会する", user_confirm_path(current_user), method: :get, class: "btn btn-outline-danger" %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <%= form_with model: @user, method: :patch do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td class="pr-5"><%= f.label :profile_image, "プロフィール画像(任意)" %></td>
+            <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :nickname, "ニックネーム(*必須)" %></td>
+            <td><%= f.text_field :nickname, placeholder: "20文字以内", :size=>"30" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :email, "メールアドレス(*必須)" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"30" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :prefecture, "居住地(任意)" %></td>
+            <td><%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'} %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :gender, "性別(任意)" %></td>
+            <td><%= f.select :gender, User.genders.keys, {prompt: '選択してください'} %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :age, "年齢(*必須)" %></td>
+            <!--編集前の登録年齢をプルダウン選択の初期値で表示-->
+            <td><%= f.select :age, options_for_select((18..100).to_a, @user.age) %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :favorite_food, "好きな食べ物(任意)" %></td>
+            <td><%= f.text_field :favorite_food, :size=>"30" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :introduction, "自己紹介(任意)" %></td>
+            <td><%= f.text_area :introduction, rows: "6", cols: "30", class: "mb-3" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="actions">
+              <%= f.submit "変更を保存する", class: "btn btn-outline-success mr-5" %>
+              <%= link_to "退会する", user_confirm_path(current_user), method: :get, class: "btn btn-outline-danger" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
 </div>
