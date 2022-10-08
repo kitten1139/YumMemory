@@ -9,6 +9,8 @@ class Admin::HomesController < ApplicationController
       @posts = Post.privacy.old.page(params[:page]).per(24)
     elsif params[:rate_count]
       @posts = Post.privacy.rate_count.page(params[:page]).per(24)
+    elsif params[:score_count]
+      @posts = Post.privacy.score_count.page(params[:page]).per(24)
     else
       @posts = Post.privacy.page(params[:page]).per(24)
     end

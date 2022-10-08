@@ -51,7 +51,7 @@
       </div>
       <div>
         <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :body, rows: "5", placeholder: "コメントをここに(100文字以内)", cols: "50" %>
+          <%= f.text_area :body, rows: "5", placeholder: "コメントをここに(100文字以内)", cols: "40" %>
           <%= f.submit "送信する" %>
         <% end %>
       </div>

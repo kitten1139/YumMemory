@@ -13,6 +13,7 @@ class Post < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}#投稿日時が新しい順に取り出し
   scope :old, -> {order(created_at: :asc)}#投稿日時が古い順に取り出し
   scope :rate_count, -> {order(rate: :desc)}#評価が高い順に取り出し
+  scope :score_count, -> {order(score: :asc)}#スコアが低い順に取り出し
 
   #公開を選択している投稿を取得
   def self.privacy
