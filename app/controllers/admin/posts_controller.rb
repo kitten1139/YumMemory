@@ -12,10 +12,10 @@ class Admin::PostsController < ApplicationController
   end
 
   def comment_destroy
-    post = Post.find(params[:post_id])
-    post_comment = post.post_comments.find(params[:id])
+    @post = Post.find(params[:post_id])
+    post_comment = @post.post_comments.find(params[:id])
     post_comment.destroy
-    redirect_to admin_post_path(post)
+    render :post_comments  #render先にjsファイルを指定
   end
 
   private

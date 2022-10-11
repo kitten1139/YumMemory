@@ -23,17 +23,8 @@
   </div>
   <div class="row">
     <div class="offset-md-3 col-md-6">
-      <div>
-      <p>コメント件数：<%= @post.post_comments.count %></p>
-        <% @post.post_comments.each do |post_comment| %>
-          <p>
-          <%= image_tag post_comment.user.get_profile_image, class: "rounded-circle", size: "50x50" %>
-          <%= post_comment.user.nickname %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %>&emsp;
-          <%= post_comment.body %>
-          <%= link_to "削除する", admin_post_comment_destroy_path(post_comment.post, post_comment), method: :delete, class: "btn-sm btn-danger" %>
-          </p>
-        <% end %>
+      <div id="comments_area">
+        <%= render "public/post_comments/post_comments", post: @post %>
       </div>
     </div>
   </div>
