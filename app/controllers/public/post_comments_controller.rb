@@ -5,16 +5,16 @@ class Public::PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_id = @post.id
     if comment.save
-      redirect_to post_path(@post), notice: "コメントを投稿しました。"
+      render :post_comments #render先にjsファイルを指定
     else
-      redirect_to post_path(@post), notice: "コメントの投稿に失敗しました。"
+      render "posts/show"
     end
   end
 
   def destroy
     PostComment.find(params[:id]).destroy
     @post = Post.find(params[:post_id])
-    redirect_to post_path(@post)
+    render :post_comments  #render先にjsファイルを指定
   end
 
   private
