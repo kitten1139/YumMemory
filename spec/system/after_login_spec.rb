@@ -8,7 +8,7 @@ describe '投稿のテスト' do
       sign_in @user
       visit new_post_path
     end
-    
+
     context '表示の確認' do
       it 'new_post_pathが"/posts/new"であるか' do
         expect(current_path).to eq('/posts/new')
@@ -17,7 +17,7 @@ describe '投稿のテスト' do
         expect(page).to have_button '新規投稿'
       end
     end
-    
+
     context '投稿処理のテスト' do
       it '投稿後のリダイレクト先は正しいか' do
         fill_in 'post[item_name]', with: Faker::Lorem.characters(number:10)
@@ -28,5 +28,5 @@ describe '投稿のテスト' do
       end
     end
   end
-  
+
 end

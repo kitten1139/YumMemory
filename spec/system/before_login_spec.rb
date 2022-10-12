@@ -217,11 +217,11 @@ describe '[STEP1] ユーザログイン前のテスト' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link).to match(//)
       end
-      it 'マイページリンクが表示される: 左上から3番目のリンクが「マイページ」である' do
+      it 'マイページリンクが表示される: 左上から2番目のリンクが「マイページ」である' do
         mypage_link = find_all('a')[1].native.inner_text
         expect(mypage_link).to match(/マイページ/)
       end
-      it 'みんなの投稿一覧リンクが表示される: 左上から1番目のリンクが「みんなの投稿一覧」である' do
+      it 'みんなの投稿一覧リンクが表示される: 左上から3番目のリンクが「みんなの投稿一覧」である' do
         posts_link = find_all('a')[2].native.inner_text
         expect(posts_link).to match(/みんなの投稿一覧/)
       end
