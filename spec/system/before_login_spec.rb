@@ -239,4 +239,23 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
     end
   end
+
+  describe 'ユーザログアウトのテスト' do
+    let(:user) { create(:user) }
+
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'ログイン'
+      logout_link = find_all('a')[5]
+      logout_link.click
+    end
+
+    context 'ログアウト機能のテスト' do
+      it 'ログアウト後のリダイレクト先が、トップになっている' do
+        expect(current_path).to eq '/'
+      end
+    end
+  end
 end
