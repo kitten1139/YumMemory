@@ -201,4 +201,42 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
     end
   end
+
+  describe 'ヘッダーのテスト: ログインしている場合' do
+    let(:user) { create(:user) }
+
+    before do
+      visit new_user_session_path
+      fill_in 'user[email]', with: user.email
+      fill_in 'user[password]', with: user.password
+      click_button 'ログイン'
+    end
+
+    context 'ヘッダーの表示を確認' do
+      it 'サイトロゴ(トップ画面へのリンク)が表示される: 左上から1番目のリンクが「サイトロゴ」である' do
+        home_link = find_all('a')[0].native.inner_text
+        expect(home_link).to match(//)
+      end
+      it 'マイページリンクが表示される: 左上から3番目のリンクが「マイページ」である' do
+        mypage_link = find_all('a')[1].native.inner_text
+        expect(mypage_link).to match(/マイページ/)
+      end
+      it 'みんなの投稿一覧リンクが表示される: 左上から1番目のリンクが「みんなの投稿一覧」である' do
+        posts_link = find_all('a')[2].native.inner_text
+        expect(posts_link).to match(/みんなの投稿一覧/)
+      end
+      it 'お気に入りリンクが表示される: 左上から4番目のリンクが「お気に入り」である' do
+        myfavorite_link = find_all('a')[3].native.inner_text
+        expect(myfavorite_link).to match(/お気に入り/)
+      end
+      it 'カテゴリで検索するリンクが表示される: 左上から5番目のリンクが「カテゴリで検索する」である' do
+        categories_link = find_all('a')[4].native.inner_text
+        expect(categories_link).to match(/カテゴリで検索する/)
+      end
+      it 'ログアウトリンクが表示される: 左上から6番目のリンクが「ログアウト」である' do
+        logout_link = find_all('a')[5].native.inner_text
+        expect(logout_link).to match(/ログアウト/)
+      end
+    end
+  end
 end
