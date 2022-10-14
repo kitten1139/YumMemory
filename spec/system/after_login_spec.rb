@@ -45,6 +45,21 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
+  describe '投稿一覧画面のテスト' do
+    before do
+      visit posts_path
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/posts'
+      end
+      it 'ニックネームのリンク先が正しい' do
+        expect(page).to have_link '', href: user_path(post.user)
+      end
+    end
+  end
+
   describe "新規投稿画面(new_post_path)のテスト" do
     before do
       visit new_post_path
