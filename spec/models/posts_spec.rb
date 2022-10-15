@@ -1,7 +1,17 @@
 require 'rails_helper'
 
-describe 'モデルのテスト' do
-  it "有効な投稿内容の場合は保存されるか" do
-    expect(FactoryBot.build(:post)).to be_valid
+RSpec.describe 'Postモデルのテスト', type: :model do
+  describe 'バリデーションのテスト' do
+    subject { post.valid? }
+
+    let(:user) { create(:user) }
+    let!(:post) { build(:post, user_id: user.id) }
+
+    context 'item_nameカラム' do
+      it '空欄でないこと' do
+        post.item_name = ''
+        is_expected.to eq false
+      end
+    end
   end
 end

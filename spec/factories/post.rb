@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 FactoryBot.define do
   factory :post do
     association :user
@@ -6,5 +8,6 @@ FactoryBot.define do
     review_title { Faker::Lorem.characters(number:10) }
     review_body { Faker::Lorem.characters(number:30) }
     rate { 1.0 }
+    score { 0.9 }
   end
 end

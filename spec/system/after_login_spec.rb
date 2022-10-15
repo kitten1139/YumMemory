@@ -3,8 +3,8 @@ require 'rails_helper'
 describe '[STEP2] ユーザログイン後のテスト' do
   let(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
-  let!(:other_post) { create(:post, user: other_user) }
+  let!(:post) { create(:post, user: user, privacy: 0) }
+  let!(:other_post) { create(:post, user: other_user, privacy: 0) }
 
   before do
     visit new_user_session_path
@@ -54,8 +54,27 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/posts'
       end
-      it 'ニックネームのリンク先が正しい' do
-        expect(page).to have_link '', href: user_path(post.user)
+      it '自分とのニックネームのリンク先と表示が正しい' do
+        expect(page).to have_link post.user.nickname, href: user_path(post.user)
+        click_link post.user.nickname
+        expect(page).to have_content 'マイページ'
+      end
+      it '他人のニックネームのリンク先と表示が正しい' do
+        expect(page).to have_link other_post.user.nickname, href: user_path(other_post.user)
+        click_link other_post.user.nickname
+        expect(page).to have_content 'プロフィール'
+      end
+      it '商品画像を押すと、投稿詳細画面に遷移する' do
+        expect(page).to have_link '', href: post_path(post)
+      end
+      it '「商品名」が表示される' do
+        expect(page).to have_content post.item_name
+      end
+      it '「コメント件数」が表示される' do
+        expect(page).to have_content post.post_comments.count
+      end
+      it '「ユーザーニックネーム」が表示される' do
+        expect(page).to have_content post.user.nickname
       end
     end
   end
