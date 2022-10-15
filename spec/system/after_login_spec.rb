@@ -45,7 +45,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
-  describe '投稿一覧画面のテスト' do
+  describe 'みんなの投稿一覧画面のテスト' do
     before do
       visit posts_path
     end
@@ -75,6 +75,42 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
       it '「ユーザーニックネーム」が表示される' do
         expect(page).to have_content post.user.nickname
+      end
+    end
+  end
+
+  describe '自分の投稿詳細画面のテスト' do
+    before do
+      visit post_path(post)
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/posts/' + post.id.to_s
+      end
+      it '「商品レビュー詳細」と表示される' do
+        expect(page).to have_content '商品レビュー詳細'
+      end
+      it '投稿日時が表示される' do
+        expect(page).to have_content post.created_at.strftime('%Y/%m/%d %H:%M:%S')
+      end
+      it '商品名が表示される' do
+        expect(page).to have_content post.item_name
+      end
+      it '商品カテゴリ名が表示される' do
+        expect(page).to have_content post.item_category.name
+      end
+      it '投稿のレビュータイトルが表示される' do
+        expect(page).to have_content post.review_title
+      end
+      it '投稿のレビュー本文が表示される' do
+        expect(page).to have_content post.review_body
+      end
+      it '投稿の編集リンクが表示される' do
+        expect(page).to have_link '投稿を編集する', href: edit_post_path(post)
+      end
+      it '投稿の削除リンクが表示される' do
+        expect(page).to have_link '削除する', href: post_path(post)
       end
     end
   end
