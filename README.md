@@ -82,3 +82,7 @@ demono.2
 admin@yummemory
 ##### <パスワード>
 yummemoadmin
+
+## 使用素材
+- 画像素材(https://www.photo-ac.com/)
+- ロゴ素材(https://www.logofactoryweb.com/default_lg.asp?lg=ja)
