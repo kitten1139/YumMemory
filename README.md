@@ -33,7 +33,12 @@
 
 ## 設計書
 
+<ER図>
 ![ER図](https://raw.githubusercontent.com/kitten1139/YumMemory/4e55b8887c341816847ab29c439ec837adce3383/app/assets/images/ER%E5%9B%B3.png)
+<テーブル定義書>
+https://docs.google.com/spreadsheets/d/1o39JKSANY66muw5zKM3rS1CbkxXpFZOj6PSWybp0-8Y/edit?usp=sharing  
+<アプリケーション詳細設計書>  
+https://docs.google.com/spreadsheets/d/15Sn1l-W1omoYXCjk2CVW5buZ3wANbyrtNMVdQPvGvyg/edit?usp=sharing
 
 ## 主な機能
 
