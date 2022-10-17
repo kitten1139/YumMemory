@@ -12,10 +12,12 @@ class Public::PostsController < ApplicationController
     #送信されたレビュー内容からscoreを設定
     @post.score = Language.get_data(post_params[:review_body])
     @post.user = current_user
+      logger.info @post.inspect
     if @post.save
       flash[:notice] = "商品を投稿しました"
       redirect_to posts_path
     else
+      # raise @post.errors.inspect
       flash[:notice] = "商品の投稿に失敗しました。*必須項目は必ず入力してください。"
       @large_categories = LargeCategory.all
       @post = Post.new
