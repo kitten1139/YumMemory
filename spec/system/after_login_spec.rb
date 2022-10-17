@@ -114,11 +114,29 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
     end
 
-    context 'いいね確認' do
+    context 'いいねの確認' do
       it 'リンクが諸々正しい' do
         expect(page).to have_link '', href: post_post_favorites_path(post) #リンクが正しい
         expect(page).to have_css('i.far') #いいねの表示
         expect(page).to have_css('i.fas') #いいね済の表示
+      end
+    end
+  end
+
+  describe '他人の投稿詳細画面のテスト' do
+    before do
+      visit post_path(other_post)
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/posts/' + other_post.id.to_s
+      end
+      it '投稿の編集リンクが表示されない' do
+        expect(page).not_to have_link '投稿を編集する', href: edit_post_path(post)
+      end
+      it '投稿の削除リンクが表示されない' do
+        expect(page).not_to have_link '削除する', href: post_path(post)
       end
     end
   end
