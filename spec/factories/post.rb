@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 FactoryBot.define do
   factory :post do
     association :user

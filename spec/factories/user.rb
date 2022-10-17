@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 FactoryBot.define do
   factory :user do
     nickname { Faker::Lorem.characters(number: 10) }

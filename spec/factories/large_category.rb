@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :large_category do
-    name { 'お菓子' }
+    name { Faker::Lorem.characters(number:10) }
   end
 end
