@@ -113,6 +113,14 @@ describe '[STEP2] ユーザログイン後のテスト' do
         expect(page).to have_link '削除する', href: post_path(post)
       end
     end
+
+    context 'いいね確認' do
+      it 'リンクが諸々正しい' do
+        expect(page).to have_link '', href: post_post_favorites_path(post) #リンクが正しい
+        expect(page).to have_css('i.far') #いいねの表示
+        expect(page).to have_css('i.fas') #いいね済の表示
+      end
+    end
   end
 
   describe "新規投稿画面(new_post_path)のテスト" do
