@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "変更を保存しました"
+      flash[:notice] = "変更を保存しました。"
       redirect_to admin_user_path(@user)
     else
       render :edit
@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
   def admin_sign_in?
     unless admin_signed_in?
       redirect_to new_admin_session_path
-      flash[:notice] = "サイトを使用するにはログインをしてください"
+      flash[:notice] = "サイトを使用するにはログインをしてください。"
     end
   end
 

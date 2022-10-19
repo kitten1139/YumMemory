@@ -18,10 +18,10 @@ before_action :ensure_guest_user, only: [:edit]
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:notice] = "変更を保存しました"
+      flash[:notice] = "変更を保存しました。"
       redirect_to user_path(@user)
     else
-      flash[:notice] = "変更に失敗しました。*必須項目は必ず入力してください"
+      flash[:notice] = "変更に失敗しました。*必須項目は必ず入力してください。"
       render :edit
     end
   end
@@ -77,7 +77,7 @@ before_action :ensure_guest_user, only: [:edit]
   def user_sign_in?
     unless user_signed_in?
       redirect_to new_user_session_path
-      flash[:notice] = "サイトを使用するにはログインをしてください"
+      flash[:notice] = "サイトを使用するにはログインをしてください。"
     end
   end
 

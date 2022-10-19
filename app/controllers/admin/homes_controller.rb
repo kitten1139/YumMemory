@@ -22,7 +22,7 @@ class Admin::HomesController < ApplicationController
   def admin_sign_in?
     unless admin_signed_in?
       redirect_to new_admin_session_path
-      flash[:notice] = "サイトを使用するにはログインをしてください"
+      flash[:notice] = "サイトを使用するにはログインをしてください。"
     end
   end
 

@@ -22,7 +22,7 @@ before_action :user_sign_in?
   def user_sign_in?
     unless user_signed_in?
       redirect_to new_user_session_path
-      flash[:notice] = "サイトを使用するにはログインをしてください"
+      flash[:notice] = "サイトを使用するにはログインをしてください。"
     end
   end
 
