@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :user_sign_in?
   before_action :ensure_guest_user, only:[:new, :create]
+  before_action :ensure_user, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -49,10 +50,6 @@ class Public::PostsController < ApplicationController
     @large_category = LargeCategory.find(@item_category.large_category_id)
     @item_categories = ItemCategory.where(large_category_id: @large_category.id)
     @large_categories = LargeCategory.all
-    unless @post.user == current_user
-      redirect_to post_path(@post)
-      flash[:notice] = "他のユーザーの投稿は編集できません"
-    end
   end
 
   def update
@@ -75,6 +72,7 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to posts_path
   end
 
@@ -96,6 +94,13 @@ class Public::PostsController < ApplicationController
       redirect_to user_path(current_user)
       flash[:notice] = "ゲストユーザーは投稿できません。"
     end
+  end
+
+  def ensure_user
+    @posts = current_user.posts
+    @post = @posts.find_by(id: params[:id])
+    redirect_to post_path unless @post
+    flash[:notice] = "他のユーザーの投稿は編集・削除できません。"
   end
 
 end
