@@ -12,9 +12,15 @@ class Public::PostCommentsController < ApplicationController
   end
 
   def destroy
-    PostComment.find(params[:id]).destroy
     @post = Post.find(params[:post_id])
-    render :post_comments  #render先にjsファイルを指定
+    @comment = PostComment.find(params[:id])
+    if @comment.user == current_user
+      @comment.destroy
+      render :post_comments  #render先にjsファイルを指定
+    else
+      redirect_to post_path(@post)
+      flash[:notice] = "他のユーザーのコメントは削除できません。"
+    end
   end
 
   private
