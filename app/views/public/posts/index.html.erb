@@ -3,8 +3,9 @@
   <h5>みんなの投稿一覧(全<%= @total_posts %>件)</h5>
   <%= link_to "新しい順", posts_path(latest: "true") %>
   |<%= link_to "古い順", posts_path(old: "true") %>
-  |<%= link_to "評価の高い順", posts_path(rate_count: "true") %>
-  
+  |<%= link_to "星評価の高い順", posts_path(rate_count: "true") %>
+  |<%= link_to "いいねの多い順", posts_path(post_favorite_count: "true") %>
+
   <div class="row">
     <%= render "index", posts: @posts %>
   </div>

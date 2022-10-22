@@ -3,7 +3,7 @@
   <h5>会員の投稿一覧(全<%= @total_posts %>件)</h5>
   <%= link_to "新しい順", admin_path(latest: "true") %>
   |<%= link_to "古い順", admin_path(old: "true") %>
-  |<%= link_to "評価の高い順", admin_path(rate_count: "true") %>
+  |<%= link_to "星評価の高い順", admin_path(rate_count: "true") %>
   |<%= link_to "スコアの低い順", admin_path(score_count: "true") %>
   <div class="row">
     <% @posts.each do |post| %>
