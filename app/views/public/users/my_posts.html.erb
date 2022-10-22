@@ -3,6 +3,7 @@
   <%= link_to "新しい順", user_my_posts_path(latest: "true") %>
   |<%= link_to "古い順", user_my_posts_path(old: "true") %>
   |<%= link_to "評価の高い順", user_my_posts_path(rate_count: "true") %>
+  |<%= link_to "いいねの多い順", user_my_posts_path(post_favorite_count: "true") %>
   <div class="row">
     <%= render "public/posts/index", posts: @posts %>
   </div>
