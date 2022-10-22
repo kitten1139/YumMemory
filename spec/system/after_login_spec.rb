@@ -184,29 +184,5 @@ describe '[STEP2] ユーザログイン後のテスト' do
         expect(page).to have_button '新規投稿'
       end
     end
-
-    # context '投稿成功のテスト' do
-    #   let!(:user) { create(:user) }
-    #   before do
-    #     fill_in 'post[item_name]', with: Faker::Lorem.characters(number:10)
-    #     fill_in 'post[review_title]', with: Faker::Lorem.characters(number:10)
-    #     fill_in 'post[review_body]', with: Faker::Lorem.characters(number:30)
-    #     find("#large_category").find("option[value='1']").select_option
-    #     item_select = find("#item_category").native
-    #     item_select.value = 1
-    #     find("input[name='post[rate]']", visible: false).set(5)
-    #     find("#post_privacy").set(0)
-    #     #select('1', from: 'sample', visible: false)
-    #   end
-
-    #   it '自分の新しい投稿が正しく保存される' do
-    #     expect { click_button '新規投稿' }.to change(user.posts, :count).from(1).to(2)
-    #   end
-
-    #   it '投稿後のリダイレクト先は正しいか' do
-    #     click_button '新規投稿'
-    #     expect(page).to have_current_path posts_path
-    #   end
-    # end
   end
 end

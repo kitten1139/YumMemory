@@ -49,7 +49,7 @@
   <!--新規投稿画面での文章の改行を反映して表示-->
   <td colspan="2" class="sentiment-score">
     <!--スコアの値に応じて色分け-->
-    <% if post.score >= 0 %>
+    <% if post.score.to_i >= 0 %>
       <span class="text-info font-weight-bold">ポジティブスコア[<%= post.score %>]</span></br>
     <% else %>
       <span class="text-danger font-weight-bold">ネガティブスコア[<%= post.score %>]</span></br>

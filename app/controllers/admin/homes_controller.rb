@@ -12,7 +12,7 @@ class Admin::HomesController < ApplicationController
     elsif params[:score_count]
       @posts = Post.privacy.score_count.page(params[:page]).per(24)
     else
-      @posts = Post.privacy.page(params[:page]).per(24)
+      @posts = Post.privacy.page(params[:page]).per(24).order("created_at DESC")
     end
     @total_posts = Post.privacy.count
   end

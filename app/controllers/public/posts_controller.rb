@@ -16,7 +16,6 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "商品を投稿しました。"
       redirect_to posts_path
     else
-      # raise @post.errors.inspect
       flash[:notice] = "商品の投稿に失敗しました。*必須項目は必ず入力してください。"
       @large_categories = LargeCategory.all
       @post = Post.new
@@ -36,7 +35,7 @@ class Public::PostsController < ApplicationController
       posts = Post.privacy.post_favorite_count
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) #配列に対してページャを作成
     else
-      @posts = Post.privacy.page(params[:page]).per(24)
+      @posts = Post.privacy.page(params[:page]).per(24).order("created_at DESC")
     end
     @total_posts = Post.privacy.count
   end

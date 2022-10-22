@@ -47,7 +47,7 @@ before_action :ensure_guest_user, only: [:edit]
     elsif params[:rate_count]
       @posts = current_user.posts.rate_count.page(params[:page]).per(24)
     else
-      @posts = current_user.posts.page(params[:page]).per(24)
+      @posts = current_user.posts.page(params[:page]).per(24).order("created_at DESC")
     end
     @total_posts = @posts.total_count
   end
@@ -63,7 +63,7 @@ before_action :ensure_guest_user, only: [:edit]
     elsif params[:rate_count]
       @posts = Post.where(id: post_favorites).rate_count.page(params[:page]).per(24)
     else
-      @posts = Post.where(id: post_favorites).page(params[:page]).per(24)
+      @posts = Post.where(id: post_favorites).page(params[:page]).per(24).order("created_at DESC")
     end
     @total_posts = @posts.total_count
   end
