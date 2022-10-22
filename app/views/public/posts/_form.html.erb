@@ -20,6 +20,9 @@
   <tr>
     <td><%= f.label :item_category_id, "小カテゴリ(*必須)"  %></td>
     <td><%= f.collection_select(:item_category_id, item_categories, :id, :name, { prompt: "--選択してください--" }, {style: "width:270px;", id: "item_category" }) %></td>
+    <!--<select id="sample" name="[post]item_category_id" style="display: none;">-->
+    <!--  <option value="1">1</option>-->
+    <!--</select>-->
   </tr>
   <tr>
     <td><%= f.label :rate, "評価(*必須)", class: "" %></td>
