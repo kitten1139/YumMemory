@@ -47,7 +47,7 @@ before_action :ensure_guest_user, only: [:edit]
     elsif params[:rate_count]
       @posts = current_user.posts.rate_count.page(params[:page]).per(24)
     elsif params[:post_favorite_count]
-      posts = Post.privacy.post_favorite_count
+      posts = current_user.post_favorite_count
       @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) #配列に対してページャを作成
     else
       @posts = current_user.posts.page(params[:page]).per(24).order("created_at DESC")
