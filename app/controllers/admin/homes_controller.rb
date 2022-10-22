@@ -7,8 +7,9 @@ class Admin::HomesController < ApplicationController
       @posts = Post.privacy.latest.page(params[:page]).per(24)
     elsif params[:old]
       @posts = Post.privacy.old.page(params[:page]).per(24)
-    elsif params[:rate_count]
-      @posts = Post.privacy.rate_count.page(params[:page]).per(24)
+    elsif params[:post_favorite_count]
+      posts = Post.privacy.post_favorite_count
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) #配列に対してページャを作成
     elsif params[:score_count]
       @posts = Post.privacy.score_count.page(params[:page]).per(24)
     else

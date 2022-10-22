@@ -3,7 +3,7 @@
   <h5>会員の投稿一覧(全<%= @total_posts %>件)</h5>
   <%= link_to "新しい順", admin_path(latest: "true") %>
   |<%= link_to "古い順", admin_path(old: "true") %>
-  |<%= link_to "星評価の高い順", admin_path(rate_count: "true") %>
+  |<%= link_to "いいねの多い順", admin_path(post_favorite_count: "true") %>
   |<%= link_to "スコアの低い順", admin_path(score_count: "true") %>
   <div class="row">
     <% @posts.each do |post| %>
@@ -11,6 +11,7 @@
         <%= link_to admin_post_path(post) do %>
           <%= image_tag post.get_item_image, size: "200x200" %>
         <% end %>
+        <div class="text-decoration-none text-danger"><i class="fas fa-heart"></i><%= post.post_favorites.count %></div>
         <div style="word-wrap:break-word; width:200px;">
           <b><%= post.item_name %></b></br>
         </div>
