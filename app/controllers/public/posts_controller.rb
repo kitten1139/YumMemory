@@ -43,6 +43,10 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    if @post.privacy == "1" && @post.user != current_user
+      redirect_to posts_path
+      flash[:notice] = "他のユーザーの非公開投稿は閲覧できません。"
+    end
   end
 
   def edit
