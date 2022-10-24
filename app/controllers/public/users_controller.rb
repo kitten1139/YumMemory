@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
 before_action :user_sign_in?
 before_action :ensure_guest_user, only: [:edit]
+before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
 
   def show
     @user = User.find(params[:id])
@@ -95,4 +96,11 @@ before_action :ensure_guest_user, only: [:edit]
     end
   end
 
+  def ensure_correct_user
+    @user = User.find(params[:user_id])
+    unless @user == current_user
+      redirect_to user_path(@user)
+      flash[:notice] = "本人のみ閲覧可能です。"
+    end
+  end
 end
