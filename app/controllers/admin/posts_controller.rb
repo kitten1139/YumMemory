@@ -3,6 +3,10 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    if @post.privacy == "1" && admin_signed_in?
+      redirect_to admin_path
+      flash[:notice] = "非公開投稿は閲覧できません。"
+    end
   end
 
   def destroy
