@@ -11,8 +11,8 @@ module YumMemory
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.i18n.default_locale = :ja
-    config.paths.add 'lib', eager_load: true
-    config.time_zone = 'Asia/Tokyo'
+    config.paths.add "lib", eager_load: true
+    config.time_zone = "Asia/Tokyo"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

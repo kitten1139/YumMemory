@@ -1,5 +1,5 @@
 class Public::CategoriesController < ApplicationController
-before_action :user_sign_in?
+  before_action :user_sign_in?
 
   def index
     @large_categories = LargeCategory.all
@@ -18,5 +18,4 @@ before_action :user_sign_in?
       flash[:notice] = "サイトを使用するにはログインをしてください。"
     end
   end
-
 end

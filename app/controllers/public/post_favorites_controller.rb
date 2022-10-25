@@ -1,5 +1,4 @@
 class Public::PostFavoritesController < ApplicationController
-
   def create
     @post = Post.find(params[:post_id])
     if @post.privacy == "1" && @post.user != current_user
@@ -16,5 +15,4 @@ class Public::PostFavoritesController < ApplicationController
     post_favorite = current_user.post_favorites.find_by(post_id: @post.id)
     post_favorite.destroy
   end
-
 end

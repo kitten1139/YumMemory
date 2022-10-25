@@ -1,8 +1,8 @@
 class Public::SearchesController < ApplicationController
-before_action :user_sign_in?
+  before_action :user_sign_in?
 
   def search
-    #検索モデルUser or Postで条件分岐
+    # 検索モデルUser or Postで条件分岐
     @range = params[:range]
     if @range == "User"
       @users = User.looks(params[:word])
@@ -25,5 +25,4 @@ before_action :user_sign_in?
       flash[:notice] = "サイトを使用するにはログインをしてください。"
     end
   end
-
 end

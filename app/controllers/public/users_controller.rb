@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
-before_action :user_sign_in?
-before_action :ensure_guest_user, only: [:edit]
-before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
+  before_action :user_sign_in?
+  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
 
   def show
     @user = User.find(params[:id])
@@ -9,7 +9,7 @@ before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
 
   def edit
     @user = User.find(params[:id])
-    #編集するユーザーが本人でない場合はユーザー詳細ページにリダイレクトする
+    # 編集するユーザーが本人でない場合はユーザー詳細ページにリダイレクトする
     unless @user == current_user
       redirect_to user_path(@user)
       flash[:notice] = "他のユーザーの情報は編集することができません"
@@ -40,7 +40,7 @@ before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
   end
 
   def my_posts
-    #マイ投稿一覧画面の並び替え表示
+    # マイ投稿一覧画面の並び替え表示
     if params[:latest]
       @posts = current_user.posts.latest.page(params[:page]).per(24)
     elsif params[:old]
@@ -49,7 +49,7 @@ before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
       @posts = current_user.posts.rate_count.page(params[:page]).per(24)
     elsif params[:post_favorite_count]
       posts = current_user.posts.post_favorite_count
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) #配列に対してページャを作成
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) # 配列に対してページャを作成
     else
       @posts = current_user.posts.page(params[:page]).per(24).order("created_at DESC")
     end
@@ -59,7 +59,7 @@ before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
   def my_favorites
     @user = User.find(params[:user_id])
     post_favorites = PostFavorite.where(user_id: @user.id).pluck(:post_id)
-    #お気に入り投稿一覧画面の並び替え表示
+    # お気に入り投稿一覧画面の並び替え表示
     if params[:latest]
       @posts = Post.where(id: post_favorites).latest.page(params[:page]).per(24)
     elsif params[:old]
@@ -68,7 +68,7 @@ before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
       @posts = Post.where(id: post_favorites).rate_count.page(params[:page]).per(24)
     elsif params[:post_favorite_count]
       posts = Post.where(id: post_favorites).post_favorite_count
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) #配列に対してページャを作成
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) # 配列に対してページャを作成
     else
       @posts = Post.where(id: post_favorites).page(params[:page]).per(24).order("created_at DESC")
     end
@@ -76,31 +76,30 @@ before_action :ensure_correct_user, only: [:my_posts, :my_favorites]
   end
 
   private
-
-  def user_params
-    params.require(:user).permit(:nickname, :gender, :age, :prefecture, :introduction, :favorite_food, :profile_image, :email)
-  end
-
-  def user_sign_in?
-    unless user_signed_in?
-      redirect_to new_user_session_path
-      flash[:notice] = "サイトを使用するにはログインをしてください。"
+    def user_params
+      params.require(:user).permit(:nickname, :gender, :age, :prefecture, :introduction, :favorite_food, :profile_image, :email)
     end
-  end
 
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.email == "guest@example.com"
-      redirect_to user_path(current_user)
-      flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    def user_sign_in?
+      unless user_signed_in?
+        redirect_to new_user_session_path
+        flash[:notice] = "サイトを使用するにはログインをしてください。"
+      end
     end
-  end
 
-  def ensure_correct_user
-    @user = User.find(params[:user_id])
-    unless @user == current_user
-      redirect_to user_path(@user)
-      flash[:notice] = "本人のみ閲覧可能です。"
+    def ensure_guest_user
+      @user = User.find(params[:id])
+      if @user.email == "guest@example.com"
+        redirect_to user_path(current_user)
+        flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      end
     end
-  end
+
+    def ensure_correct_user
+      @user = User.find(params[:user_id])
+      unless @user == current_user
+        redirect_to user_path(@user)
+        flash[:notice] = "本人のみ閲覧可能です。"
+      end
+    end
 end

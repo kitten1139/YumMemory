@@ -40,16 +40,14 @@ class Admin::LargeCategoriesController < ApplicationController
   end
 
   private
-
-  def large_category_params
-    params.require(:large_category).permit(:name)
-  end
-
-  def admin_sign_in?
-    unless admin_signed_in?
-      redirect_to new_admin_session_path
-      flash[:notice] = "サイトを使用するにはログインをしてください。"
+    def large_category_params
+      params.require(:large_category).permit(:name)
     end
-  end
 
+    def admin_sign_in?
+      unless admin_signed_in?
+        redirect_to new_admin_session_path
+        flash[:notice] = "サイトを使用するにはログインをしてください。"
+      end
+    end
 end

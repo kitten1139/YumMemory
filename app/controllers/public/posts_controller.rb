@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :user_sign_in?
-  before_action :ensure_guest_user, only:[:new, :create]
+  before_action :ensure_guest_user, only: [:new, :create]
 
   def new
     @post = Post.new
@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    #送信されたレビュー内容からscoreを設定
+    # 送信されたレビュー内容からscoreを設定
     @post.score = Language.get_data(post_params[:review_body])
     @post.user = current_user
     if @post.save
@@ -24,7 +24,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    #投稿一覧画面(公開投稿)の並び替え表示
+    # 投稿一覧画面(公開投稿)の並び替え表示
     if params[:latest]
       @posts = Post.privacy.latest.page(params[:page]).per(24)
     elsif params[:old]
@@ -33,7 +33,7 @@ class Public::PostsController < ApplicationController
       @posts = Post.privacy.rate_count.page(params[:page]).per(24)
     elsif params[:post_favorite_count]
       posts = Post.privacy.post_favorite_count
-      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) #配列に対してページャを作成
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(24) # 配列に対してページャを作成
     else
       @posts = Post.privacy.page(params[:page]).per(24).order("created_at DESC")
     end
@@ -63,10 +63,10 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    #送信されたレビュー内容からscoreを再設定
+    # 送信されたレビュー内容からscoreを再設定
     @post.score = Language.get_data(post_params[:review_body])
     if @post.user != current_user
-      redirect_to  post_path(@post)
+      redirect_to post_path(@post)
     else
       if @post.update(post_params)
         flash[:notice] = "変更を保存しました。"
@@ -85,7 +85,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.user != current_user
-      redirect_to  post_path(@post)
+      redirect_to post_path(@post)
       flash[:notice] = "他のユーザーの投稿は削除できません。"
     else
       @post.destroy
@@ -95,23 +95,21 @@ class Public::PostsController < ApplicationController
   end
 
   private
-
-  def post_params
-    params.require(:post).permit(:item_category_id, :rate, :review_title, :review_body, :item_name, :item_image, :privacy, :store_name)
-  end
-
-  def user_sign_in?
-    unless user_signed_in?
-      redirect_to new_user_session_path
-      flash[:notice] = "サイトを使用するにはログインをしてください。"
+    def post_params
+      params.require(:post).permit(:item_category_id, :rate, :review_title, :review_body, :item_name, :item_image, :privacy, :store_name)
     end
-  end
 
-  def ensure_guest_user
-    if current_user.email == "guest@example.com"
-      redirect_to user_path(current_user)
-      flash[:notice] = "ゲストユーザーは投稿できません。"
+    def user_sign_in?
+      unless user_signed_in?
+        redirect_to new_user_session_path
+        flash[:notice] = "サイトを使用するにはログインをしてください。"
+      end
     end
-  end
 
+    def ensure_guest_user
+      if current_user.email == "guest@example.com"
+        redirect_to user_path(current_user)
+        flash[:notice] = "ゲストユーザーは投稿できません。"
+      end
+    end
 end
