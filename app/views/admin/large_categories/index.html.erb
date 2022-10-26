@@ -1,9 +1,6 @@
 <div class="container">
   <div class="field_with_errors">
   <h5>カテゴリ(大分類)一覧・追加</h5>
-
-    <%= flash[:notice] %>
-
     <%= form_with model: @large_category, url: admin_large_categories_path do |f| %>
       <b><%= f.label :name, "カテゴリ名" %></b>
       <%= f.text_field :name, placeholder: "カテゴリ名(大分類)", :size=>"40" %>

@@ -13,7 +13,7 @@ class Admin::LargeCategoriesController < ApplicationController
       redirect_to admin_large_categories_path
     else
       @large_categories = LargeCategory.all
-      flash[:notice] = "カテゴリ(大分類)名を入力してください。"
+      flash[:alert] = "カテゴリ(大分類)名を入力してください。"
       render :index
     end
   end
@@ -28,7 +28,7 @@ class Admin::LargeCategoriesController < ApplicationController
       flash[:notice] = "更新が完了しました。"
       redirect_to admin_large_categories_path
     else
-      flash[:notice] = "カテゴリ(大分類)名を入力してください。"
+      flash[:alert] = "カテゴリ(大分類)名を入力してください。"
       render :edit
     end
   end
@@ -47,7 +47,7 @@ class Admin::LargeCategoriesController < ApplicationController
     def admin_sign_in?
       unless admin_signed_in?
         redirect_to new_admin_session_path
-        flash[:notice] = "サイトを使用するにはログインをしてください。"
+        flash[:alert] = "サイトを使用するにはログインをしてください。"
       end
     end
 end

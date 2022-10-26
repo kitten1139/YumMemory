@@ -1,7 +1,6 @@
 <div class="container">
   <div class="field_with_errors">
     <h1><%= @large_category.name %></h1>
-    <%= flash[:notice] %>
     <%= form_with model: @item_category, url: admin_large_category_item_categories_path(@large_category) do |f| %>
       <b><%= f.label :name, "カテゴリ名" %></b>
       <%= f.text_field :name, placeholder: "カテゴリ名(小分類)", :size=>"40" %>

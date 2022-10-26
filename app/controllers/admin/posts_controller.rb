@@ -5,7 +5,7 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.privacy == "1" && admin_signed_in?
       redirect_to admin_path
-      flash[:notice] = "非公開投稿は閲覧できません。"
+      flash[:alert] = "非公開投稿は閲覧できません。"
     end
   end
 
@@ -26,7 +26,7 @@ class Admin::PostsController < ApplicationController
     def admin_sign_in?
       unless admin_signed_in?
         redirect_to new_admin_session_path
-        flash[:notice] = "サイトを使用するにはログインをしてください。"
+        flash[:alert] = "サイトを使用するにはログインをしてください。"
       end
     end
 end

@@ -1,9 +1,6 @@
 <div class="container mb-5">
   <div class="field_with_errors">
   <h5>カテゴリ(小分類)編集</h5>
-
-  <%= flash[:notice] %>
-
     <%= form_with model: @item_category, url: admin_item_category_path(@item_category), method: :patch do |f| %>
       <b><%= f.label :name, "カテゴリ名" %></b>
       <%= f.text_field :name, placeholder: "カテゴリ名", :size=>"40" %>

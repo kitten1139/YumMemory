@@ -9,7 +9,8 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to posts_path, notice: "guestuserでログインしました。"
+    redirect_to posts_path
+    flash[:notice] = "guestuserでログインしました。"
   end
 
   # GET /resource/sign_in
@@ -42,7 +43,7 @@ class Public::SessionsController < Devise::SessionsController
       return if !@user
       # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
       if @user.valid_password?(params[:user][:password]) && @user.is_deleted
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        flash[:alert] = "退会済みです。再度ご登録をしてご利用ください。"
         # is_deletedの値がtrueだった場合はサインアップ画面に遷移する処理を実行
         redirect_to new_user_registration_path
       end

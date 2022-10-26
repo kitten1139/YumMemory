@@ -18,7 +18,7 @@ class Public::PostCommentsController < ApplicationController
       render :post_comments  # render先にjsファイルを指定
     else
       redirect_to post_path(@post)
-      flash[:notice] = "他のユーザーのコメントは削除できません。"
+      flash[:alert] = "他のユーザーのコメントは削除できません。"
     end
   end
 

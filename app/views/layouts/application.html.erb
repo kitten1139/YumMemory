@@ -12,6 +12,10 @@
 
   <body>
     <%= render "layouts/header" %>
+    <div class="container">
+      <p class="text-success mt-3"><b><%= flash[:notice] %></b></p>
+      <p class="text-danger mt-3"><b><%= flash[:alert] %></b></p>
+    </div>
     <%= yield %>
     <%= render "layouts/footer"%>
   </body>

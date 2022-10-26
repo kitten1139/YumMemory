@@ -16,7 +16,7 @@ class Admin::ItemCategoriesController < ApplicationController
       flash[:notice] = "登録が完了しました。"
       redirect_to admin_large_category_item_categories_path(@large_category)
     else
-      flash[:notice] = "カテゴリ(小分類)名を入力してください。"
+      flash[:alert] = "カテゴリ(小分類)名を入力してください。"
       render :index
     end
   end
@@ -31,7 +31,7 @@ class Admin::ItemCategoriesController < ApplicationController
       flash[:notice] = "更新が完了しました。"
       redirect_to admin_large_category_item_categories_path(@item_category.large_category)
     else
-      flash[:notice] = "カテゴリ(小分類)名を入力してください。"
+      flash[:alert] = "カテゴリ(小分類)名を入力してください。"
       render :edit
     end
   end
@@ -50,7 +50,7 @@ class Admin::ItemCategoriesController < ApplicationController
     def admin_sign_in?
       unless admin_signed_in?
         redirect_to new_admin_session_path
-        flash[:notice] = "サイトを使用するにはログインをしてください。"
+        flash[:alert] = "サイトを使用するにはログインをしてください。"
       end
     end
 end

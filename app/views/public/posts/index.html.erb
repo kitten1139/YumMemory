@@ -1,5 +1,4 @@
 <div class="container">
-  <%= flash[:notice] %>
   <h5>みんなの投稿一覧(全<%= @total_posts %>件)</h5>
   <%= link_to "新しい順", posts_path(latest: "true") %>
   |<%= link_to "古い順", posts_path(old: "true") %>

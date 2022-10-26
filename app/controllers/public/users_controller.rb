@@ -12,7 +12,7 @@ class Public::UsersController < ApplicationController
     # 編集するユーザーが本人でない場合はユーザー詳細ページにリダイレクトする
     unless @user == current_user
       redirect_to user_path(@user)
-      flash[:notice] = "他のユーザーの情報は編集することができません"
+      flash[:alert] = "他のユーザーの情報は編集することができません"
     end
   end
 
@@ -22,7 +22,7 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "変更を保存しました。"
       redirect_to user_path(@user)
     else
-      flash[:notice] = "変更に失敗しました。*必須項目は必ず入力してください。"
+      flash[:alert] = "変更に失敗しました。*必須項目は必ず入力してください。"
       render :edit
     end
   end
@@ -83,7 +83,7 @@ class Public::UsersController < ApplicationController
     def user_sign_in?
       unless user_signed_in?
         redirect_to new_user_session_path
-        flash[:notice] = "サイトを使用するにはログインをしてください。"
+        flash[:alert] = "サイトを使用するにはログインをしてください。"
       end
     end
 
@@ -91,7 +91,7 @@ class Public::UsersController < ApplicationController
       @user = User.find(params[:id])
       if @user.email == "guest@example.com"
         redirect_to user_path(current_user)
-        flash[:notice] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+        flash[:alert] = "ゲストユーザーはプロフィール編集画面へ遷移できません。"
       end
     end
 
@@ -99,7 +99,7 @@ class Public::UsersController < ApplicationController
       @user = User.find(params[:user_id])
       unless @user == current_user
         redirect_to user_path(@user)
-        flash[:notice] = "本人のみ閲覧可能です。"
+        flash[:alert] = "本人のみ閲覧可能です。"
       end
     end
 end
