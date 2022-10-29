@@ -195,6 +195,15 @@ describe "[STEP2] ユーザログイン後のテスト" do
       it "URLが正しい" do
         expect(current_path).to eq "/users/" + user.id.to_s
       end
+      it "自分のプロフィール編集画面へのリンクが存在する" do
+        expect(page).to have_link "プロフィール情報を編集/追加する", href: edit_user_path(user)
+      end
+      it "マイ投稿一覧画面へのリンクが存在する" do
+        expect(page).to have_link "マイ投稿一覧を見る", href: user_my_posts_path(user)
+      end
+      it "新規投稿画面へのリンクが存在する" do
+        expect(page).to have_link "新規投稿する", href: new_post_path
+      end
     end
   end
 end
