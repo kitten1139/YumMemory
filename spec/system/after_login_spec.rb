@@ -206,4 +206,16 @@ describe "[STEP2] ユーザログイン後のテスト" do
       end
     end
   end
+
+  describe '自分のユーザ情報編集画面のテスト' do
+    before do
+      visit edit_user_path(user)
+    end
+
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/' + user.id.to_s + '/edit'
+      end
+    end
+  end
 end
