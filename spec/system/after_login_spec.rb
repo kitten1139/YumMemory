@@ -207,14 +207,41 @@ describe "[STEP2] ユーザログイン後のテスト" do
     end
   end
 
-  describe '自分のユーザ情報編集画面のテスト' do
+  describe "自分のユーザ情報編集画面のテスト" do
     before do
       visit edit_user_path(user)
     end
 
-    context '表示の確認' do
-      it 'URLが正しい' do
-        expect(current_path).to eq '/users/' + user.id.to_s + '/edit'
+    context "表示の確認" do
+      it "URLが正しい" do
+        expect(current_path).to eq "/users/" + user.id.to_s + "/edit"
+      end
+      it "画像編集フォームが表示される" do
+        expect(page).to have_field "user[profile_image]"
+      end
+      it "ニックネーム編集フォームに自分のニックネームが表示される" do
+        expect(page).to have_field "user[nickname]", with: user.nickname
+      end
+      it "メールアドレス編集フォームに自分のメールアドレスが表示される" do
+        expect(page).to have_field "user[email]", with: user.email
+      end
+      it "居住地編集フォームに自分の居住地が表示される" do
+        expect(page).to have_field "user[prefecture]", with: user.prefecture
+      end
+      it "性別編集フォームに自分の性別が表示される" do
+        expect(page).to have_field "user[gender]", with: user.gender
+      end
+      it "年齢編集フォームに自分の年齢が表示される" do
+        expect(page).to have_field "user[age]", with: user.age
+      end
+      it "好きな食べ物編集フォームに自分の好きな食べ物が表示される" do
+        expect(page).to have_field "user[favorite_food]", with: user.favorite_food
+      end
+      it "自己紹介編集フォームに自分の自己紹介文が表示される" do
+        expect(page).to have_field "user[introduction]", with: user.introduction
+      end
+      it "変更を保存するボタンが表示される" do
+        expect(page).to have_button "変更を保存する"
       end
     end
   end
