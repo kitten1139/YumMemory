@@ -244,5 +244,24 @@ describe "[STEP2] ユーザログイン後のテスト" do
         expect(page).to have_button "変更を保存する"
       end
     end
+
+    context '更新成功のテスト' do
+      before do
+        @user_old_nickname = user.nickname
+        @user_old_email = user.email
+        @user_old_favorite_food = user.favorite_food
+        @user_old_intrpduction = user.introduction
+        fill_in 'user[nickname]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[email]', with: Faker::Internet.email
+        fill_in 'user[favorite_food]', with: Faker::Lorem.characters(number: 10)
+        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 20)
+        click_button '変更を保存する'
+        save_page
+      end
+
+      it 'ニックネームが正しく更新される' do
+        expect(user.reload.nickname).not_to eq @user_old_nickname
+      end
+    end
   end
 end
