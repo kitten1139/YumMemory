@@ -245,22 +245,34 @@ describe "[STEP2] ユーザログイン後のテスト" do
       end
     end
 
-    context '更新成功のテスト' do
+    context "更新成功のテスト" do
       before do
         @user_old_nickname = user.nickname
         @user_old_email = user.email
         @user_old_favorite_food = user.favorite_food
         @user_old_intrpduction = user.introduction
-        fill_in 'user[nickname]', with: Faker::Lorem.characters(number: 10)
-        fill_in 'user[email]', with: Faker::Internet.email
-        fill_in 'user[favorite_food]', with: Faker::Lorem.characters(number: 10)
-        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 20)
-        click_button '変更を保存する'
+        fill_in "user[nickname]", with: Faker::Lorem.characters(number: 10)
+        fill_in "user[email]", with: Faker::Internet.email
+        fill_in "user[favorite_food]", with: Faker::Lorem.characters(number: 10)
+        fill_in "user[introduction]", with: Faker::Lorem.characters(number: 20)
+        click_button "変更を保存する"
         save_page
       end
 
-      it 'ニックネームが正しく更新される' do
+      it "ニックネームが正しく更新される" do
         expect(user.reload.nickname).not_to eq @user_old_nickname
+      end
+      it "メールアドレスが正しく更新される" do
+        expect(user.reload.email).not_to eq @user_old_email
+      end
+      it "好きな食べ物が正しく更新される" do
+        expect(user.reload.favorite_food).not_to eq @user_old_favorite_food
+      end
+      it "自己紹介文が正しく更新される" do
+        expect(user.reload.introduction).not_to eq @user_old_intrpduction
+      end
+      it "リダイレクト先が、自分のユーザ詳細画面になっている" do
+        expect(current_path).to eq "/users/" + user.id.to_s
       end
     end
   end
