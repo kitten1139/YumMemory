@@ -150,6 +150,34 @@ describe "[STEP1] ユーザログイン前のテスト" do
         expect(current_path).to eq "/users/" + User.last.id.to_s
       end
     end
+
+    context "ユーザ新規登録失敗: ニックネームを21文字にする" do
+      let(:user) { create(:user) }
+
+      before do
+        visit new_user_registration_path
+        @nickname = Faker::Lorem.characters(number: 21)
+        @email = "a" + user.email
+        fill_in "user[nickname]", with: @nickname
+        fill_in "user[email]", with: @email
+        fill_in "user[password]", with: "password"
+        fill_in "user[password_confirmation]", with: "password"
+      end
+
+      it "新規登録されない" do
+        expect { click_button "新規登録" }.not_to change(User.all, :count)
+      end
+      it "新規登録画面を表示しており、フォームの内容が正しい" do
+        click_button "新規登録"
+        expect(page).to have_content "新規会員登録"
+        expect(page).to have_field "user[nickname]", with: @nickname
+        expect(page).to have_field "user[email]", with: @email
+      end
+      it "バリデーションエラーが表示される" do
+        click_button "新規登録"
+        expect(page).to have_content "ニックネームは20文字以内で入力してください"
+      end
+    end
   end
 
   describe "ユーザログイン" do
