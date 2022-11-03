@@ -276,4 +276,16 @@ describe "[STEP2] ユーザログイン後のテスト" do
       end
     end
   end
+
+  describe '他人のユーザ情報詳細画面のテスト' do
+    before do
+      visit user_path(other_user)
+    end
+    context '他人のユーザ情報編集画面' do
+      it '遷移できず、他人のユーザ詳細画面にリダイレクトされる' do
+        visit edit_user_path(other_user)
+        expect(current_path).to eq '/users/' + other_user.id.to_s
+      end
+    end
+  end
 end
