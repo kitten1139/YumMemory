@@ -277,14 +277,30 @@ describe "[STEP2] ユーザログイン後のテスト" do
     end
   end
 
-  describe '他人のユーザ情報詳細画面のテスト' do
+  describe "他人のユーザ情報詳細画面のテスト" do
     before do
       visit user_path(other_user)
     end
-    context '他人のユーザ情報編集画面' do
-      it '遷移できず、他人のユーザ詳細画面にリダイレクトされる' do
+
+    context "表示の確認" do
+      it "URLが正しい" do
+        expect(current_path).to eq "/users/" + other_user.id.to_s
+      end
+      it "プロフィール編集画面へのリンクが存在しない" do
+        expect(page).to have_no_link "プロフィール情報を編集/追加する", href: edit_user_path(other_user)
+      end
+      it "マイ投稿一覧画面へのリンクが存在しない" do
+        expect(page).to have_no_link "マイ投稿一覧を見る", href: user_my_posts_path(other_user)
+      end
+      it "新規投稿画面へのリンクが存在しない" do
+        expect(page).to have_no_link "新規投稿する", href: new_post_path
+      end
+    end
+
+    context "他人のユーザ情報編集画面" do
+      it "遷移できず、他人のユーザ詳細画面にリダイレクトされる" do
         visit edit_user_path(other_user)
-        expect(current_path).to eq '/users/' + other_user.id.to_s
+        expect(current_path).to eq "/users/" + other_user.id.to_s
       end
     end
   end
