@@ -275,6 +275,21 @@ describe "[STEP2] ユーザログイン後のテスト" do
         expect(current_path).to eq "/users/" + user.id.to_s
       end
     end
+  
+    context '自分のユーザの情報編集失敗: ニックネームを21文字にする' do
+      before do
+        @user_old_nickname = user.nickname
+        @user_old_email = user.email
+        @nickname = Faker::Lorem.characters(number: 21)
+        visit edit_user_path(user)
+        fill_in 'user[nickname]', with: @nickname
+        click_button '変更を保存する'
+      end
+
+      it '更新されない' do
+        expect(user.reload.nickname).to eq @user_old_nickname
+      end
+    end
   end
 
   describe "他人のユーザ情報詳細画面のテスト" do
