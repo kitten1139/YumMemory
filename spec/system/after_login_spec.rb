@@ -275,19 +275,25 @@ describe "[STEP2] ユーザログイン後のテスト" do
         expect(current_path).to eq "/users/" + user.id.to_s
       end
     end
-  
-    context '自分のユーザの情報編集失敗: ニックネームを21文字にする' do
+
+    context "自分のユーザの情報編集失敗: ニックネームを21文字にする" do
       before do
         @user_old_nickname = user.nickname
         @user_old_email = user.email
         @nickname = Faker::Lorem.characters(number: 21)
         visit edit_user_path(user)
-        fill_in 'user[nickname]', with: @nickname
-        click_button '変更を保存する'
+        fill_in "user[nickname]", with: @nickname
+        click_button "変更を保存する"
       end
 
-      it '更新されない' do
+      it "更新されない" do
         expect(user.reload.nickname).to eq @user_old_nickname
+      end
+      it "ユーザ編集画面を表示しており、フォームの内容が正しい" do
+        expect(page).to have_field "user[nickname]", with: @nickname
+      end
+      it "バリデーションエラーが表示される" do
+        expect(page).to have_content "変更に失敗しました"
       end
     end
   end
