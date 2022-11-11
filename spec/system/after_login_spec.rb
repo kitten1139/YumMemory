@@ -325,4 +325,18 @@ describe "[STEP2] ユーザログイン後のテスト" do
       end
     end
   end
+
+  describe "投稿処理失敗時のテスト" do
+    context "投稿データの新規投稿失敗: 新規投稿画面から行い、レビュー内容のみ入力する" do
+      before do
+        visit new_post_path
+        @review_body = Faker::Lorem.characters(number: 19)
+        fill_in "post[review_body]", with: @body
+      end
+
+      it "投稿が保存されない" do
+        expect { click_button "新規投稿" }.not_to change(Post.all, :count)
+      end
+    end
+  end
 end
