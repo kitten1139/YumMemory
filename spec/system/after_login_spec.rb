@@ -331,11 +331,20 @@ describe "[STEP2] ユーザログイン後のテスト" do
       before do
         visit new_post_path
         @review_body = Faker::Lorem.characters(number: 19)
-        fill_in "post[review_body]", with: @body
+        fill_in "post[review_body]", with: @review_body
       end
 
       it "投稿が保存されない" do
         expect { click_button "新規投稿" }.not_to change(Post.all, :count)
+      end
+      it "新規投稿画面を表示している" do
+        click_button "新規投稿"
+        visit new_post_path
+        expect(current_path).to eq "/posts/new"
+      end
+      it "バリデーションエラーが表示される" do
+        click_button "新規投稿"
+        expect(page).to have_content "商品の投稿に失敗しました。*必須項目は必ず入力してください。"
       end
     end
   end
