@@ -1,6 +1,11 @@
 require "rails_helper"
 
 describe "[STEP1] ユーザログイン前のテスト" do
+  let(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
+  let!(:post) { create(:post, user: user, privacy: 0) }
+  let!(:other_post) { create(:post, user: other_user, privacy: 0) }
+
   describe "トップ画面のテスト" do
     before do
       visit root_path
@@ -284,6 +289,19 @@ describe "[STEP1] ユーザログイン前のテスト" do
       it "ログアウト後のリダイレクト先が、トップになっている" do
         expect(current_path).to eq "/"
       end
+    end
+  end
+
+  describe "ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する" do
+    subject { current_path }
+
+    it "ユーザ詳細画面" do
+      visit user_path(user)
+      is_expected.to eq "/users/sign_in"
+    end
+    it "ユーザ情報編集画面" do
+      visit edit_user_path(user)
+      is_expected.to eq "/users/sign_in"
     end
   end
 end
