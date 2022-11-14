@@ -303,5 +303,21 @@ describe "[STEP1] ユーザログイン前のテスト" do
       visit edit_user_path(user)
       is_expected.to eq "/users/sign_in"
     end
+    it "新規投稿画面" do
+      visit new_post_path
+      is_expected.to eq "/users/sign_in"
+    end
+    it "投稿一覧画面" do
+      visit posts_path
+      is_expected.to eq "/users/sign_in"
+    end
+    it "投稿詳細画面" do
+      visit post_path(post)
+      is_expected.to eq "/users/sign_in"
+    end
+    it "投稿編集画面" do
+      visit edit_post_path(post)
+      is_expected.to eq "/users/sign_in"
+    end
   end
 end
