@@ -319,5 +319,9 @@ describe "[STEP1] ユーザログイン前のテスト" do
       visit edit_post_path(post)
       is_expected.to eq "/users/sign_in"
     end
+    it "カテゴリ一覧画面" do
+      visit categories_path
+      is_expected.to eq "/users/sign_in"
+    end
   end
 end
